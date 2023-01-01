@@ -5,11 +5,12 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker", "TimeTracker\TimeTracker.csproj", "{4145E91C-B39F-42B2-B3BC-1163E306D9F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Rcl", "TimeTracker.Rcl\TimeTracker.Rcl.csproj", "{0D222FFC-4593-4E97-9808-5356802EC1CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Rcl", "TimeTracker.Rcl\TimeTracker.Rcl.csproj", "{0D222FFC-4593-4E97-9808-5356802EC1CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3FEAB4E-869B-44FC-BA05-1C89E82B7B3C}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		global.json = global.json
 	EndProjectSection
 EndProject
 Global
