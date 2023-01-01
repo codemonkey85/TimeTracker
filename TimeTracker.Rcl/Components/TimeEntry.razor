@@ -1,0 +1,13 @@
+﻿@using static Services.HoursCalculator
+
+@if (TimeEntryModel is not null)
+{
+    <div class="time-entry-container">
+        <label>@TimeEntryModel.Date.ToString("dddd, MM-dd")</label>
+        <label for="StartTime">Start</label>
+        <input type="time" id="StartTime" @bind="TimeEntryModel.StartTime" @bind:after="Refresh" />
+        <label for="EndTime">End</label>
+        <input type="time" id="EndTime" @bind="TimeEntryModel.EndTime" @bind:after="Refresh" />
+        <label>Total hours: @CalculateHoursWorked(TimeEntryModel)</label>
+    </div>
+}

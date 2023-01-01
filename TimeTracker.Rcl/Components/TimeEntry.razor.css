@@ -1,0 +1,14 @@
+﻿input[type=date] {
+    padding: 5px;
+    margin: 5px;
+}
+
+input[type=time] {
+    padding: 5px;
+    margin: 5px;
+}
+
+.time-entry-container {
+    padding: 5px;
+    margin: 5px;
+}

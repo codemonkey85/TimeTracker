@@ -7,4 +7,6 @@ builder.Services.AddScoped(_ => new HttpClient
     BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
 });
 
+builder.Services.AddScoped<IRefreshService, RefreshService>();
+
 await builder.Build().RunAsync();

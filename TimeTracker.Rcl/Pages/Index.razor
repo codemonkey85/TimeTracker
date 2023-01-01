@@ -1,3 +1,31 @@
 ﻿@page "/"
+@implements IDisposable
 
-<h1>Hello, world!</h1>
+<PageTitle>Time Tracker</PageTitle>
+
+<div class="index-container">
+    <h1>Time Tracker</h1>
+
+    <input type="date" @bind="StartDate" @bind:after="AfterStartDateChanged" />
+
+    <WeekEntry WeekEntryModel="WeekEntryModel" />
+</div>
+
+@code {
+    private DateTime StartDate { get; set; }
+    private WeekEntryModel? WeekEntryModel { get; set; }
+
+    protected override void OnInitialized()
+    {
+        StartDate = DateTime.Now;
+        WeekEntryModel = new WeekEntryModel(StartDate);
+        RefreshService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose() => RefreshService.OnChange -= StateHasChanged;
+
+    private void AfterStartDateChanged()
+    {
+        WeekEntryModel = new WeekEntryModel(StartDate);
+    }
+}
