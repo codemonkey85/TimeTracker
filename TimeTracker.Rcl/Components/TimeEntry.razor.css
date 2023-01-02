@@ -12,3 +12,10 @@ input[type=time] {
     padding: 5px;
     margin: 5px;
 }
+
+@media(max-width: 800px) {
+    .time-entry-container {
+        border: 1px solid black;
+        border-radius: 6px;
+    }
+}

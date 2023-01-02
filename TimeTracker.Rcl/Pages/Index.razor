@@ -7,8 +7,10 @@
 
     @if (WeekEntryModel is not null)
     {
-        <input id="startDateInput" type="date" value="@DateOnly.FromDateTime(DateTime.Today)" @onchange="OnStartDateChanged" />
-
+        <input id="startDateInput"
+               type="date"
+               value="@DateOnly.FromDateTime(DateTime.Today)"
+               @onchange="OnStartDateChanged" />
         <WeekEntry WeekEntryModel="WeekEntryModel" />
     }
 </div>
