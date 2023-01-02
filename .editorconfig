@@ -259,4 +259,4 @@ dotnet_style_parentheses_in_other_operators = never_if_unnecessary:suggestion
 dotnet_style_qualification_for_event = false:suggestion
 dotnet_style_qualification_for_method = false:suggestion
 dotnet_style_qualification_for_property = false:suggestion
-dotnet_style_qualification_for_field = false:silent
+dotnet_style_qualification_for_field = false:suggestion
