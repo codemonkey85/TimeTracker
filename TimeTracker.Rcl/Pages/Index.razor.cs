@@ -9,21 +9,20 @@ public partial class Index : IDisposable
     {
         WeekEntryModel = new WeekEntryModel(DateTime.Now);
         RefreshService.OnChange += StateHasChanged;
-        Refresh();
     }
 
     public void Dispose() => RefreshService.OnChange -= StateHasChanged;
 
     private void Refresh() => RefreshService.Refresh();
 
-    private void OnStartDateChanged()
+    private void OnStartDateChanged(ChangeEventArgs e)
     {
-        if (WeekEntryModel is null)
+        if (WeekEntryModel is null || !DateOnly.TryParse(e.Value?.ToString(), out var startDate))
         {
             return;
         }
 
-        WeekEntryModel = new WeekEntryModel(WeekEntryModel.StartDate);
+        WeekEntryModel = new WeekEntryModel(startDate);
         Refresh();
     }
 }

@@ -10,7 +10,25 @@ public partial class TimeEntry : IDisposable
 
     private void Refresh() => RefreshService.Refresh();
 
-    private void OnStartTimeChanged() => Refresh();
+    private void OnStartTimeChanged(ChangeEventArgs e)
+    {
+        if (TimeEntryModel is null || !TimeOnly.TryParse(e.Value?.ToString(), out var startTime))
+        {
+            return;
+        }
 
-    private void OnEndTimeChanged() => Refresh();
+        TimeEntryModel.StartTime = startTime;
+        Refresh();
+    }
+
+    private void OnEndTimeChanged(ChangeEventArgs e)
+    {
+        if (TimeEntryModel is null || !TimeOnly.TryParse(e.Value?.ToString(), out var endTime))
+        {
+            return;
+        }
+
+        TimeEntryModel.EndTime = endTime;
+        Refresh();
+    }
 }
