@@ -3,18 +3,21 @@ namespace TimeTracker.Rcl.Pages;
 // ReSharper disable once ClassNeverInstantiated.Global
 public partial class Index : IDisposable
 {
-    private DateTime StartDate { get; set; }
-
     private WeekEntryModel? WeekEntryModel { get; set; }
 
     protected override void OnInitialized()
     {
-        StartDate = DateTime.Now;
-        WeekEntryModel = new WeekEntryModel(StartDate);
+        WeekEntryModel = new WeekEntryModel(DateTime.Now);
         RefreshService.OnChange += StateHasChanged;
+        Refresh();
     }
 
     public void Dispose() => RefreshService.OnChange -= StateHasChanged;
 
-    private void AfterStartDateChanged() => WeekEntryModel = new WeekEntryModel(StartDate);
+    private void Refresh() => RefreshService.Refresh();
+
+    private void OnStartDateChanged()
+    {
+        Refresh();
+    }
 }

@@ -2,13 +2,32 @@
 
 public class WeekEntryModel
 {
-    public DateOnly? StartDate { get; set; }
+    private DateOnly? startDate;
+
+    public DateOnly? StartDate
+    {
+        get => startDate;
+        set
+        {
+            startDate = value;
+            Reload();
+        }
+    }
 
     public TimeEntryModel[] TimeEntries { get; set; } = new TimeEntryModel[7];
 
     public WeekEntryModel(DateTime startDate)
     {
         StartDate = DateOnly.FromDateTime(startDate.StartOfWeek());
+        Reload();
+    }
+
+    private void Reload()
+    {
+        if (StartDate is null)
+        {
+            return;
+        }
         for (var day = 0; day < 7; day++)
         {
             TimeEntries[day] = new TimeEntryModel { Date = StartDate.Value.AddDays(day) };

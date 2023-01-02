@@ -5,9 +5,9 @@
     <div class="time-entry-container">
         <label>@TimeEntryModel.Date.ToString("dddd, MM-dd")</label>
         <label for="StartTime">Start</label>
-        <input type="time" id="StartTime" @bind="TimeEntryModel.StartTime" />
+        <input type="time" id="StartTime" @bind-value="@TimeEntryModel.StartTime" @bind-value:after="OnStartTimeChanged" />
         <label for="EndTime">End</label>
-        <input type="time" id="EndTime" @bind="TimeEntryModel.EndTime" />
+        <input type="time" id="EndTime" @bind-value="@TimeEntryModel.EndTime" @bind-value:after="OnEndTimeChanged" />
         <label>Total hours: @CalculateHoursWorked(TimeEntryModel)</label>
     </div>
 }

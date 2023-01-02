@@ -9,4 +9,14 @@ public partial class TimeEntry : IDisposable
     public void Dispose() => RefreshService.OnChange -= StateHasChanged;
 
     private void Refresh() => RefreshService.Refresh();
+
+    private void OnStartTimeChanged()
+    {
+        Refresh();
+    }
+
+    private void OnEndTimeChanged()
+    {
+        Refresh();
+    }
 }
