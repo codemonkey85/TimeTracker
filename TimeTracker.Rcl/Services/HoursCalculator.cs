@@ -22,4 +22,10 @@ public static class HoursCalculator
         var diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
         return dt.AddDays(-1 * diff).Date;
     }
+
+    public static DateOnly StartOfWeek(this DateOnly dt, DayOfWeek startOfWeek = DayOfWeek.Sunday)
+    {
+        var diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
+        return dt.AddDays(-1 * diff);
+    }
 }

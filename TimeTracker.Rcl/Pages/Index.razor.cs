@@ -18,6 +18,12 @@ public partial class Index : IDisposable
 
     private void OnStartDateChanged()
     {
+        if (WeekEntryModel is null)
+        {
+            return;
+        }
+
+        WeekEntryModel = new WeekEntryModel(WeekEntryModel.StartDate);
         Refresh();
     }
 }

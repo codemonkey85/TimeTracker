@@ -2,35 +2,27 @@
 
 public class WeekEntryModel
 {
-    private DateOnly? startDate;
-
-    public DateOnly? StartDate
-    {
-        get => startDate;
-        set
-        {
-            startDate = value;
-            Reload();
-        }
-    }
+    public DateOnly StartDate { get; set; }
 
     public TimeEntryModel[] TimeEntries { get; set; } = new TimeEntryModel[7];
+
+    public WeekEntryModel(DateOnly startDate)
+    {
+        StartDate = startDate.StartOfWeek();
+        InitializeTimeEntries();
+    }
 
     public WeekEntryModel(DateTime startDate)
     {
         StartDate = DateOnly.FromDateTime(startDate.StartOfWeek());
-        Reload();
+        InitializeTimeEntries();
     }
 
-    private void Reload()
+    private void InitializeTimeEntries()
     {
-        if (StartDate is null)
-        {
-            return;
-        }
         for (var day = 0; day < 7; day++)
         {
-            TimeEntries[day] = new TimeEntryModel { Date = StartDate.Value.AddDays(day) };
+            TimeEntries[day] = new TimeEntryModel { Date = StartDate.AddDays(day) };
         }
     }
 

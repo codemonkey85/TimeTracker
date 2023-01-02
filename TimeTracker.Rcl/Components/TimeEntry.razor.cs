@@ -10,13 +10,7 @@ public partial class TimeEntry : IDisposable
 
     private void Refresh() => RefreshService.Refresh();
 
-    private void OnStartTimeChanged()
-    {
-        Refresh();
-    }
+    private void OnStartTimeChanged() => Refresh();
 
-    private void OnEndTimeChanged()
-    {
-        Refresh();
-    }
+    private void OnEndTimeChanged() => Refresh();
 }
