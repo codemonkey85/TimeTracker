@@ -8,7 +8,7 @@ public static class HoursCalculator
         return (endTime - startTime).TotalHours;
     }
 
-    public static TimeOnly ConvertTime(TimeOnly time) => time switch
+    private static TimeOnly ConvertTime(TimeOnly time) => time switch
     {
         { Minute: < 8 } => new TimeOnly(time.Hour, 0),
         { Minute: < 23 } => new TimeOnly(time.Hour, 15),
