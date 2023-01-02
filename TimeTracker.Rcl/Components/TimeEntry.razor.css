@@ -13,7 +13,7 @@ input[type=time] {
     margin: 5px;
 }
 
-@media(max-width: 800px) {
+@media screen and (max-width:768px) {
     .time-entry-container {
         border: 1px solid black;
         border-radius: 6px;
