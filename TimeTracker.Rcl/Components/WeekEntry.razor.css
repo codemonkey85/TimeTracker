@@ -1,12 +1,12 @@
 ﻿.week-entry-container {
     padding: 5px;
     margin: 5px;
+    display: flex;
+    flex-direction: row;
 }
 
 @media(max-width: 800px) {
     .week-entry-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
     }
 }
