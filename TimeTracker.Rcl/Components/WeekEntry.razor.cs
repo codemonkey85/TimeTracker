@@ -4,8 +4,6 @@ public partial class WeekEntry : IDisposable
 {
     [Parameter] public WeekEntryModel? WeekEntryModel { get; set; }
 
-    private const double MaxHours = 30.5;
-
     private async Task SaveTimeEntryAsync()
     {
         switch (WeekEntryModel)
