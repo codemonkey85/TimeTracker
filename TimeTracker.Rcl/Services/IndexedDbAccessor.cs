@@ -2,8 +2,8 @@
 
 public class IndexedDbAccessor : IAsyncDisposable
 {
-    public Lazy<IJSObjectReference> accessorJsRef = new();
-    public readonly IJSRuntime jsRuntime;
+    private Lazy<IJSObjectReference> accessorJsRef = new();
+    private readonly IJSRuntime jsRuntime;
 
     public IndexedDbAccessor(IJSRuntime jsRuntime) => this.jsRuntime = jsRuntime;
 
@@ -13,7 +13,7 @@ public class IndexedDbAccessor : IAsyncDisposable
         await accessorJsRef.Value.InvokeVoidAsync("initialize");
     }
 
-    public async Task WaitForReference()
+    private async Task WaitForReference()
     {
         if (accessorJsRef.IsValueCreated is false)
         {
@@ -29,5 +29,33 @@ public class IndexedDbAccessor : IAsyncDisposable
         {
             await accessorJsRef.Value.DisposeAsync();
         }
+    }
+
+    public async Task<T> GetValueAsync<T>(string storeName, int id)
+    {
+        await WaitForReference();
+        var result = await accessorJsRef.Value.InvokeAsync<T>("get", storeName, id);
+
+        return result;
+    }
+
+    public async Task<List<T>> GetAllValuesAsync<T>(string storeName)
+    {
+        await WaitForReference();
+        var result = await accessorJsRef.Value.InvokeAsync<List<T>>("getAll", storeName);
+
+        return result;
+    }
+
+    public async Task SetValueAsync<T>(string storeName, T value)
+    {
+        await WaitForReference();
+        await accessorJsRef.Value.InvokeVoidAsync("set", storeName, value);
+    }
+
+    public async Task RemoveValueAsync(string storeName, int id)
+    {
+        await WaitForReference();
+        await accessorJsRef.Value.InvokeVoidAsync("remove", storeName, id);
     }
 }
