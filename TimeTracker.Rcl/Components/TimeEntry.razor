@@ -12,6 +12,7 @@
             <label for="EndTime">End</label>
             <InputDate id="EndTime" Type="InputDateType.Time" @bind-Value="TimeEntryModel.EndTime" @bind-Value:after="@Refresh" />
         </span>
-        <label>Total hours: @CalculateHoursWorked(TimeEntryModel)</label>
+        <label>Total hours: @CalculateHoursWorked(TimeEntryModel).ToString(Constants.HoursFormat)</label>
+        <button type="button" class="btn btn-secondary clear-button" @onclick="ClearTimeEntry">Clear</button>
     </div>
 }

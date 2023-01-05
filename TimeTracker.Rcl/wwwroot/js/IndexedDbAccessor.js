@@ -95,3 +95,19 @@ export async function remove(storeName, id) {
     let result = await request;
     return result;
 }
+
+export async function clear(storeName) {
+    let request = new Promise((resolve) => {
+        let timeTrackerIndexedDb = indexedDB.open(DATABASE_NAME, CURRENT_VERSION);
+        timeTrackerIndexedDb.onsuccess = function () {
+            let transaction = timeTrackerIndexedDb.result.transaction(storeName, "readwrite");
+            let collection = transaction.objectStore(storeName);
+            let result = collection.clear();
+            result.onsuccess = function () {
+                resolve(result.result);
+            }
+        }
+    });
+    let result = await request;
+    return result;
+}

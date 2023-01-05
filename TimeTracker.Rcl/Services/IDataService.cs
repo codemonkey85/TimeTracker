@@ -13,4 +13,6 @@ public interface IDataService
     Task UpdateWeekEntryAsync(int id, WeekEntryModel weekEntry);
 
     Task DeleteWeekEntryAsync(WeekEntryModel weekEntry);
+
+    Task ClearAllDataAsync();
 }

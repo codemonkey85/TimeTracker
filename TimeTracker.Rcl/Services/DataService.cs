@@ -29,4 +29,7 @@ public record DataService(IndexedDbAccessor IndexedDbAccessor) : IDataService
 
     public async Task DeleteWeekEntryAsync(WeekEntryModel weekEntry) =>
         await IndexedDbAccessor.DeleteValueAsync(Constants.WeekEntriesStore, weekEntry.Id);
+
+    public async Task ClearAllDataAsync() =>
+        await IndexedDbAccessor.ClearAllDataAsync(Constants.WeekEntriesStore);
 }

@@ -21,4 +21,9 @@ input[type=time] {
         flex-direction: row;
         flex-direction: column;
     }
+
+    .clear-button {
+        width: 100px;
+        align-self: start;
+    }
 }

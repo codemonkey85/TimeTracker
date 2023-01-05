@@ -7,10 +7,10 @@
             {
                 <TimeEntry TimeEntryModel="timeEntryModel" />
             }
-            <span>Total hours: @WeekEntryModel.TotalHours</span>
+            <span>Total hours: @WeekEntryModel.TotalHours.ToString(Constants.HoursFormat)</span>
             <br />
             <span>
-                Remaining hours: <strong>@(Constants.MaxHours - WeekEntryModel.TotalHours)</strong> out of @Constants.MaxHours.ToString(Constants.HoursFormat)
+                Remaining hours: <strong>@((Constants.MaxHours - WeekEntryModel.TotalHours).ToString(Constants.HoursFormat))</strong> out of @Constants.MaxHours.ToString(Constants.HoursFormat)
             </span>
             <div>
                 <button type="submit" class="btn btn-primary">

@@ -9,10 +9,19 @@
     {
         <div>
             <input id="startDateInput"
-                   type="date"
-                   @bind="startDate" />
+               type="date"
+               @bind="startDate" />
             <button type="button" class="btn btn-primary" @onclick="OnStartDateChangedAsync">Load</button>
         </div>
         <WeekEntry WeekEntryModel="WeekEntryModel" />
     }
+
+    <div class="danger-zone">
+        <p><strong>Danger Zone</strong></p>
+        <div class="button-container">
+            @*<button type="button" class="btn btn-secondary margin-right" @onclick=ExportData>Export</button>*@
+            @*<button type="button" class="btn btn-secondary margin-right" @onclick=ImportData>Import</button>*@
+            <button type="button" class="btn btn-danger" @onclick=ClearAllDataAsync>Clear All Data</button>
+        </div>
+    </div>
 </div>

@@ -66,4 +66,10 @@ public record IndexedDbAccessor(IJSRuntime JsRuntime) : IAsyncDisposable
         await WaitForReference();
         await accessorJsRef.Value.InvokeVoidAsync("remove", storeName, id);
     }
+
+    public async Task ClearAllDataAsync(string storeName)
+    {
+        await WaitForReference();
+        await accessorJsRef.Value.InvokeVoidAsync("clear", storeName);
+    }
 }

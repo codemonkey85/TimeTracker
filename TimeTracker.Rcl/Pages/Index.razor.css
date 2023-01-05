@@ -14,4 +14,20 @@ div.danger-zone {
     div.danger-zone p {
         color: red;
         text-align: center;
+        text-transform: uppercase;
     }
+
+@media screen and (max-width:768px) {
+    div.danger-zone {
+        display: block;
+    }
+
+        div.danger-zone div.button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+            div.danger-zone div.button-container button.margin-right {
+                margin-right: 20px;
+            }
+}
