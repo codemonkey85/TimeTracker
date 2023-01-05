@@ -12,7 +12,7 @@ public partial class Index : IDisposable
         WeekEntryModel = new WeekEntryModel(DateTime.Now);
         RefreshService.OnChange += StateHasChanged;
 
-        TestTimeEntries = await DataService.GetTimeEntries();
+        TestTimeEntries = await DataService.GetAllTimeEntries();
     }
 
     public void Dispose() => RefreshService.OnChange -= StateHasChanged;
@@ -33,7 +33,7 @@ public partial class Index : IDisposable
     private async Task DeleteTimeEntryAsync(TimeEntryModel timeEntry)
     {
         await DataService.DeleteTimeEntry(timeEntry);
-        TestTimeEntries = await DataService.GetTimeEntries();
+        TestTimeEntries = await DataService.GetAllTimeEntries();
         //RefreshService.Refresh();
     }
 }

@@ -16,7 +16,7 @@ await indexedDbAccessor.InitializeAsync();
 
 var dataService = serviceProvider.GetRequiredService<IDataService>();
 
-if (await dataService.GetTimeEntries() is not { Count: > 0 })
+if (await dataService.GetAllTimeEntries() is not { Count: > 0 })
 {
     var timeEntries = new List<TimeEntryModel>
     {

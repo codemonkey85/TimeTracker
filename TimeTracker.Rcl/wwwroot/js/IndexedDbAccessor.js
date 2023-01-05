@@ -2,8 +2,8 @@
     let timeTrackerIndexedDb = indexedDB.open(DATABASE_NAME, CURRENT_VERSION);
     timeTrackerIndexedDb.onupgradeneeded = function () {
         let db = timeTrackerIndexedDb.result;
-        db.createObjectStore("TimeEntries", { keyPath: "id", autoIncrement: true });
-        db.createObjectStore("WeekEntries", { keyPath: "id", autoIncrement: true });
+        db.createObjectStore("TimeEntries", { keyPath: "id", autoIncrement: true }).createIndex("date", "date", { unique: true });
+        db.createObjectStore("WeekEntries", { keyPath: "id", autoIncrement: true }).createIndex("startDate", "startDate", { unique: true });
     }
 }
 

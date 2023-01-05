@@ -2,7 +2,7 @@
 
 public interface IDataService
 {
-    Task<List<TimeEntryModel>?> GetTimeEntries();
+    Task<List<TimeEntryModel>?> GetAllTimeEntries();
 
     Task<TimeEntryModel?> GetTimeEntry(int id);
 
@@ -11,4 +11,15 @@ public interface IDataService
     Task UpdateTimeEntry(int id, TimeEntryModel timeEntry);
 
     Task DeleteTimeEntry(TimeEntryModel timeEntry);
+
+    Task<List<WeekEntryModel>?> GetAllWeekEntries();
+
+    Task<WeekEntryModel?> GetWeekEntry(int id);
+
+    Task CreateWeekEntry(WeekEntryModel weekEntry);
+
+    Task UpdateWeekEntry(int id, WeekEntryModel weekEntry);
+
+    Task DeleteWeekEntry(WeekEntryModel weekEntry);
+
 }
