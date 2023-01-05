@@ -1,11 +1,8 @@
 ﻿namespace TimeTracker.Rcl.Services;
 
-public class IndexedDbAccessor : IAsyncDisposable
+public record IndexedDbAccessor(IJSRuntime JsRuntime) : IAsyncDisposable
 {
     private Lazy<IJSObjectReference> accessorJsRef = new();
-    private readonly IJSRuntime jsRuntime;
-
-    public IndexedDbAccessor(IJSRuntime jsRuntime) => this.jsRuntime = jsRuntime;
 
     public async Task InitializeAsync()
     {
@@ -18,7 +15,7 @@ public class IndexedDbAccessor : IAsyncDisposable
         if (accessorJsRef.IsValueCreated is false)
         {
             accessorJsRef = new Lazy<IJSObjectReference>(
-                await jsRuntime.InvokeAsync<IJSObjectReference>(
+                await JsRuntime.InvokeAsync<IJSObjectReference>(
                     "import", "/_content/TimeTracker.Rcl/js/IndexedDbAccessor.js"));
         }
     }
