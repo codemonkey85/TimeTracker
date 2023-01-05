@@ -17,7 +17,7 @@ export async function get(storeName, id) {
             let transaction = timeTrackerIndexedDb.result.transaction(storeName, "readonly");
             let collection = transaction.objectStore(storeName);
             let result = collection.get(id);
-            result.onsuccess = function (e) {
+            result.onsuccess = function () {
                 resolve(result.result);
             }
         }
@@ -33,7 +33,7 @@ export async function getAll(storeName) {
             let transaction = timeTrackerIndexedDb.result.transaction(storeName, "readonly");
             let collection = transaction.objectStore(storeName);
             let result = collection.getAll();
-            result.onsuccess = function (e) {
+            result.onsuccess = function () {
                 resolve(result.result);
             }
         }
@@ -72,7 +72,7 @@ export async function remove(storeName, id) {
             let transaction = timeTrackerIndexedDb.result.transaction(storeName, "readwrite");
             let collection = transaction.objectStore(storeName);
             let result = collection.delete(id);
-            result.onsuccess = function (e) {
+            result.onsuccess = function () {
                 resolve(result.result);
             }
         }
