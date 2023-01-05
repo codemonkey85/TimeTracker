@@ -7,10 +7,12 @@
 
     @if (WeekEntryModel is not null)
     {
-        <input id="startDateInput"
-               type="date"
-               value="@DateOnly.FromDateTime(DateTime.Today)"
-               @onchange="OnStartDateChangedAsync" />
+        <div>
+            <input id="startDateInput"
+                   type="date"
+                   @bind="startDate" />
+            <button type="button" class="btn btn-primary" @onclick="OnStartDateChangedAsync">Load</button>
+        </div>
         <WeekEntry WeekEntryModel="WeekEntryModel" />
     }
 </div>

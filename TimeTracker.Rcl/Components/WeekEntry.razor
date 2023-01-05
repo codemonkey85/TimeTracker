@@ -3,7 +3,7 @@
     <div class="week-entry-container">
         <EditForm Model="WeekEntryModel" OnValidSubmit="SaveTimeEntryAsync">
             <DataAnnotationsValidator />
-            @foreach (var timeEntryModel in WeekEntryModel.TimeEntries)
+            @foreach (var timeEntryModel in WeekEntryModel.TimeEntries.OrderBy(timeEntry => timeEntry.Date))
             {
                 <TimeEntry TimeEntryModel="timeEntryModel" />
             }

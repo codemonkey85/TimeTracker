@@ -4,11 +4,11 @@ namespace TimeTracker.Rcl.Pages;
 public partial class Index : IDisposable
 {
     private WeekEntryModel? WeekEntryModel { get; set; }
+    private DateOnly startDate = DateOnly.FromDateTime(DateTime.Now.StartOfWeek());
 
     protected override async Task OnInitializedAsync()
     {
         RefreshService.OnChange += StateHasChanged;
-        var startDate = DateOnly.FromDateTime(DateTime.Now.StartOfWeek());
         WeekEntryModel = await DataService.GetWeekEntryFromStartDateAsync(startDate) ?? new WeekEntryModel(startDate) { IsNew = true };
         Refresh();
     }
@@ -17,12 +17,8 @@ public partial class Index : IDisposable
 
     private void Refresh() => RefreshService.Refresh();
 
-    private async Task OnStartDateChangedAsync(ChangeEventArgs e)
+    private async Task OnStartDateChangedAsync()
     {
-        if (WeekEntryModel is null || !DateOnly.TryParse(e.Value?.ToString(), out var startDate))
-        {
-            return;
-        }
         startDate = startDate.StartOfWeek();
         WeekEntryModel = await DataService.GetWeekEntryFromStartDateAsync(startDate) ?? new WeekEntryModel(startDate) { IsNew = true };
         Refresh();

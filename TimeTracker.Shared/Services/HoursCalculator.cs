@@ -4,7 +4,11 @@ public static class HoursCalculator
 {
     public static double CalculateHoursWorked(TimeEntryModel timeEntryModel)
     {
-        var (endTime, startTime) = (ConvertTime(timeEntryModel.EndTime), ConvertTime(timeEntryModel.StartTime));
+        if (timeEntryModel is { StartTime: null } or { EndTime: null })
+        {
+            return 0D;
+        }
+        var (endTime, startTime) = (ConvertTime(timeEntryModel.EndTime.Value), ConvertTime(timeEntryModel.StartTime.Value));
         return (endTime - startTime).TotalHours;
     }
 
