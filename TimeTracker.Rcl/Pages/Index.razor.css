@@ -2,3 +2,16 @@
     margin: 5px;
     padding: 5px;
 }
+
+div.danger-zone {
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+    div.danger-zone p {
+        color: red;
+        text-align: center;
+    }

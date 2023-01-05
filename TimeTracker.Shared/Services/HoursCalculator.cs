@@ -21,13 +21,13 @@ public static class HoursCalculator
         { Minute: >= 53 } => new TimeOnly(time.Hour + 1, 0),
     };
 
-    public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek = DayOfWeek.Sunday)
+    public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek = Constants.StartOfWeek)
     {
         var diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
         return dt.AddDays(-1 * diff).Date;
     }
 
-    public static DateOnly StartOfWeek(this DateOnly dt, DayOfWeek startOfWeek = DayOfWeek.Sunday)
+    public static DateOnly StartOfWeek(this DateOnly dt, DayOfWeek startOfWeek = Constants.StartOfWeek)
     {
         var diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
         return dt.AddDays(-1 * diff);
