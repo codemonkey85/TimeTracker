@@ -14,4 +14,8 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.1" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\TimeTracker.Shared\TimeTracker.Shared.csproj" />
+	</ItemGroup>
+
 </Project>

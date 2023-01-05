@@ -1,4 +1,4 @@
-﻿namespace TimeTracker.Rcl.Models;
+﻿namespace TimeTracker.Shared.Models;
 
 public class WeekEntryModel
 {

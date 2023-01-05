@@ -1,4 +1,4 @@
-﻿namespace TimeTracker.Rcl.Services;
+﻿namespace TimeTracker.Shared.Services;
 
 public static class HoursCalculator
 {
