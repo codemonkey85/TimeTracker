@@ -31,6 +31,13 @@ public class IndexedDbAccessor : IAsyncDisposable
         }
     }
 
+    public async Task<T> GetValueByIndexAsync<T>(string storeName, string indexName, object indexValue)
+    {
+        await WaitForReference();
+        var result = await accessorJsRef.Value.InvokeAsync<T>("getByIndex", storeName, indexName, indexValue);
+        return result;
+    }
+
     public async Task<List<T>> GetAllValuesAsync<T>(string storeName)
     {
         await WaitForReference();

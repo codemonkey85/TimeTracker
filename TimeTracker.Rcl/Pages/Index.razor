@@ -10,22 +10,7 @@
         <input id="startDateInput"
                type="date"
                value="@DateOnly.FromDateTime(DateTime.Today)"
-               @onchange="OnStartDateChanged" />
+               @onchange="OnStartDateChangedAsync" />
         <WeekEntry WeekEntryModel="WeekEntryModel" />
     }
 </div>
-
-<h3>Test Area</h3>
-
-@if (TestTimeEntries is { Count: > 0 })
-{
-    @foreach (var timeEntry in TestTimeEntries)
-    {
-        <TimeEntry TimeEntryModel="timeEntry" />
-        <button type="button" 
-                class="btn btn-danger"
-                @onclick="async () => await DeleteTimeEntryAsync(timeEntry)">
-            Delete
-        </button>
-    }
-}

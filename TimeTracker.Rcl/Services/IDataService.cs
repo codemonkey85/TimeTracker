@@ -2,24 +2,26 @@
 
 public interface IDataService
 {
-    Task<List<TimeEntryModel>?> GetAllTimeEntries();
+    Task<List<TimeEntryModel>?> GetAllTimeEntriesAsync();
 
-    Task<TimeEntryModel?> GetTimeEntry(int id);
+    Task<TimeEntryModel?> GetTimeEntryAsync(int id);
 
-    Task CreateTimeEntry(TimeEntryModel timeEntry);
+    Task CreateTimeEntryAsync(TimeEntryModel timeEntry);
 
-    Task UpdateTimeEntry(int id, TimeEntryModel timeEntry);
+    Task UpdateTimeEntryAsync(int id, TimeEntryModel timeEntry);
 
-    Task DeleteTimeEntry(TimeEntryModel timeEntry);
+    Task DeleteTimeEntryAsync(TimeEntryModel timeEntry);
 
-    Task<List<WeekEntryModel>?> GetAllWeekEntries();
+    Task<WeekEntryModel?> GetWeekEntryFromStartDateAsync(DateOnly indexValue);
 
-    Task<WeekEntryModel?> GetWeekEntry(int id);
+    Task<List<WeekEntryModel>?> GetAllWeekEntriesAsync();
 
-    Task CreateWeekEntry(WeekEntryModel weekEntry);
+    Task<WeekEntryModel?> GetWeekEntryAsync(int id);
 
-    Task UpdateWeekEntry(int id, WeekEntryModel weekEntry);
+    Task CreateWeekEntryAsync(WeekEntryModel weekEntry);
 
-    Task DeleteWeekEntry(WeekEntryModel weekEntry);
+    Task UpdateWeekEntryAsync(int id, WeekEntryModel weekEntry);
+
+    Task DeleteWeekEntryAsync(WeekEntryModel weekEntry);
 
 }

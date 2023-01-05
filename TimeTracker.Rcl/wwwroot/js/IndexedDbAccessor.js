@@ -10,6 +10,23 @@
 let CURRENT_VERSION = 1;
 let DATABASE_NAME = "TimeTracker";
 
+export async function getByIndex(storeName, indexName, indexValue) {
+    let request = new Promise((resolve) => {
+        let timeTrackerIndexedDb = indexedDB.open(DATABASE_NAME, CURRENT_VERSION);
+        timeTrackerIndexedDb.onsuccess = function () {
+            let transaction = timeTrackerIndexedDb.result.transaction(storeName, "readonly");
+            let collection = transaction.objectStore(storeName);
+            const myIndex = collection.index(indexName);
+            let result = myIndex.get(indexValue);
+            result.onsuccess = function () {
+                resolve(result.result);
+            }
+        }
+    });
+    let result = await request;
+    return result;
+}
+
 export async function get(storeName, id) {
     let request = new Promise((resolve) => {
         let timeTrackerIndexedDb = indexedDB.open(DATABASE_NAME, CURRENT_VERSION);
@@ -47,8 +64,7 @@ export function add(storeName, value) {
     timeTrackerIndexedDb.onsuccess = function () {
         let transaction = timeTrackerIndexedDb.result.transaction(storeName, "readwrite");
         let collection = transaction.objectStore(storeName)
-        let { date: date, startTime: startTime, endTime: endTime } = value;
-        let newValue = { date: date, startTime: startTime, endTime: endTime };
+        let { id, ...newValue } = value;
         var addRequest = collection.add(newValue);
         addRequest.onerror = function (event) {
             console.log("Error! ", event)
