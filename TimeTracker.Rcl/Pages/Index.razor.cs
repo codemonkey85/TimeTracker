@@ -32,7 +32,7 @@ public partial class Index : IDisposable
 
     private async Task DeleteTimeEntryAsync(TimeEntryModel timeEntry)
     {
-        await DataService.RemoveTimeEntry(timeEntry);
+        await DataService.DeleteTimeEntry(timeEntry);
         TestTimeEntries = await DataService.GetTimeEntries();
         //RefreshService.Refresh();
     }

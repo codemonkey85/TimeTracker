@@ -2,8 +2,8 @@
     let timeTrackerIndexedDb = indexedDB.open(DATABASE_NAME, CURRENT_VERSION);
     timeTrackerIndexedDb.onupgradeneeded = function () {
         let db = timeTrackerIndexedDb.result;
-        db.createObjectStore("TimeEntries", { keyPath: "id" });
-        db.createObjectStore("WeekEntries", { keyPath: "id" });
+        db.createObjectStore("TimeEntries", { keyPath: "id", autoIncrement: true });
+        db.createObjectStore("WeekEntries", { keyPath: "id", autoIncrement: true });
     }
 }
 
@@ -42,7 +42,21 @@ export async function getAll(storeName) {
     return result;
 }
 
-export function set(storeName, value) {
+export function add(storeName, value) {
+    let timeTrackerIndexedDb = indexedDB.open(DATABASE_NAME, CURRENT_VERSION);
+    timeTrackerIndexedDb.onsuccess = function () {
+        let transaction = timeTrackerIndexedDb.result.transaction(storeName, "readwrite");
+        let collection = transaction.objectStore(storeName)
+        let { date: date, startTime: startTime, endTime: endTime } = value;
+        let newValue = { date: date, startTime: startTime, endTime: endTime };
+        var addRequest = collection.add(newValue);
+        addRequest.onerror = function (event) {
+            console.log("Error! ", event)
+        }
+    }
+}
+
+export function put(storeName, value) {
     let timeTrackerIndexedDb = indexedDB.open(DATABASE_NAME, CURRENT_VERSION);
     timeTrackerIndexedDb.onsuccess = function () {
         let transaction = timeTrackerIndexedDb.result.transaction(storeName, "readwrite");

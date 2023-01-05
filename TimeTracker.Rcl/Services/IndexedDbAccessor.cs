@@ -35,7 +35,6 @@ public class IndexedDbAccessor : IAsyncDisposable
     {
         await WaitForReference();
         var result = await accessorJsRef.Value.InvokeAsync<T>("get", storeName, id);
-
         return result;
     }
 
@@ -43,17 +42,22 @@ public class IndexedDbAccessor : IAsyncDisposable
     {
         await WaitForReference();
         var result = await accessorJsRef.Value.InvokeAsync<List<T>>("getAll", storeName);
-
         return result;
     }
 
-    public async Task SetValueAsync<T>(string storeName, T value)
+    public async Task AddValueAsync<T>(string storeName, T value)
     {
         await WaitForReference();
-        await accessorJsRef.Value.InvokeVoidAsync("set", storeName, value);
+        await accessorJsRef.Value.InvokeVoidAsync("add", storeName, value);
     }
 
-    public async Task RemoveValueAsync(string storeName, int id)
+    public async Task PutValueAsync<T>(string storeName, T value)
+    {
+        await WaitForReference();
+        await accessorJsRef.Value.InvokeVoidAsync("put", storeName, value);
+    }
+
+    public async Task DeleteValueAsync(string storeName, int id)
     {
         await WaitForReference();
         await accessorJsRef.Value.InvokeVoidAsync("remove", storeName, id);

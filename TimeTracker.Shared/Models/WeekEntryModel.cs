@@ -2,7 +2,7 @@
 
 public class WeekEntryModel
 {
-    public int Id { get; set; }
+    public int? Id { get; set; }
 
     public DateOnly StartDate { get; set; }
 
