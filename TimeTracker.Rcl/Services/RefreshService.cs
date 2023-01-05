@@ -1,6 +1,6 @@
 ﻿namespace TimeTracker.Rcl.Services;
 
-public class RefreshService : IRefreshService
+public record RefreshService : IRefreshService
 {
     public event Action? OnChange;
 
