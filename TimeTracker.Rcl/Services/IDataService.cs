@@ -2,5 +2,13 @@
 
 public interface IDataService
 {
-    Task<List<TimeEntryModel>> TestAsync();
+    Task<List<TimeEntryModel>> GetTimeEntries();
+
+    Task<TimeEntryModel> GetTimeEntry(int id);
+
+    Task CreateTimeEntry(TimeEntryModel timeEntry);
+
+    Task UpdateTimeEntry(int id, TimeEntryModel timeEntry);
+
+    Task RemoveTimeEntry(TimeEntryModel timeEntry);
 }

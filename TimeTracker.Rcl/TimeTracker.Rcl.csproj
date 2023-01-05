@@ -15,7 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\TimeTracker.Database\TimeTracker.Database.csproj" />
+	  <ProjectReference Include="..\TimeTracker.Shared\TimeTracker.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

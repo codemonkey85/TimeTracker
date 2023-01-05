@@ -22,5 +22,10 @@
     @foreach (var timeEntry in TestTimeEntries)
     {
         <TimeEntry TimeEntryModel="timeEntry" />
+        <button type="button" 
+                class="btn btn-danger"
+                @onclick="async () => await DeleteTimeEntryAsync(timeEntry)">
+            Delete
+        </button>
     }
 }
