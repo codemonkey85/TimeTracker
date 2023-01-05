@@ -5,10 +5,14 @@ public partial class Index : IDisposable
 {
     private WeekEntryModel? WeekEntryModel { get; set; }
 
-    protected override void OnInitialized()
+    private List<TimeEntryModel>? TestTimeEntries { get; set; }
+
+    protected override async Task OnInitializedAsync()
     {
         WeekEntryModel = new WeekEntryModel(DateTime.Now);
         RefreshService.OnChange += StateHasChanged;
+
+        TestTimeEntries = await DataService.TestAsync();
     }
 
     public void Dispose() => RefreshService.OnChange -= StateHasChanged;

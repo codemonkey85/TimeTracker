@@ -2,6 +2,8 @@
 
 public class WeekEntryModel
 {
+    public int Id { get; set; }
+
     public DateOnly StartDate { get; set; }
 
     public TimeEntryModel[] TimeEntries { get; set; } = new TimeEntryModel[7];

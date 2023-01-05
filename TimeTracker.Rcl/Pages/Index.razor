@@ -14,3 +14,13 @@
         <WeekEntry WeekEntryModel="WeekEntryModel" />
     }
 </div>
+
+<h3>Test Area</h3>
+
+@if (TestTimeEntries is { Count: > 0 })
+{
+    @foreach (var timeEntry in TestTimeEntries)
+    {
+        <TimeEntry TimeEntryModel="timeEntry" />
+    }
+}
