@@ -15,4 +15,8 @@ public interface IDataService
     Task DeleteWeekEntryAsync(WeekEntryModel weekEntry);
 
     Task ClearAllDataAsync();
+
+    Task<ExportImportModel> ExportDataAsync();
+
+    Task ImportDataAsync(ExportImportModel exportImportModel);
 }

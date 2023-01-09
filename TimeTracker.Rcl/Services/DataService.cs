@@ -32,4 +32,18 @@ public record DataService(IndexedDbAccessor IndexedDbAccessor) : IDataService
 
     public async Task ClearAllDataAsync() =>
         await IndexedDbAccessor.ClearAllDataAsync(Constants.WeekEntriesStore);
+
+    public async Task<ExportImportModel> ExportDataAsync()
+    {
+        var result = new ExportImportModel(await IndexedDbAccessor.GetAllValuesAsync<WeekEntryModel>(Constants.WeekEntriesStore));
+        return result;
+    }
+
+    public async Task ImportDataAsync(ExportImportModel exportImportModel)
+    {
+        foreach (var weekEntry in exportImportModel.WeekEntries)
+        {
+            await IndexedDbAccessor.CreateValueAsync(Constants.WeekEntriesStore, weekEntry);
+        }
+    }
 }
