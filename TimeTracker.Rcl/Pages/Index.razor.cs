@@ -36,14 +36,14 @@ public partial class Index : IDisposable
 
     private async Task ClearAllDataAsync()
     {
-        var result = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to clear all data? This cannot be undone.");
+        var result = await JsRuntime.Confirm("Are you sure you want to clear all data? This cannot be undone.");
         if (result == false)
         {
             return;
         }
 
         await DataService.ClearAllDataAsync();
-        await JsRuntime.InvokeVoidAsync("alert", "All data has been cleared.");
+        await JsRuntime.Alert("All data has been cleared.");
 
         WeekEntryModel = new WeekEntryModel(startDate) { IsNew = true };
 

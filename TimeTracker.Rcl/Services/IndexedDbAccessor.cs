@@ -15,8 +15,8 @@ public record IndexedDbAccessor(IJSRuntime JsRuntime) : IAsyncDisposable
         if (accessorJsRef.IsValueCreated is false)
         {
             accessorJsRef = new Lazy<IJSObjectReference>(
-                await JsRuntime.InvokeAsync<IJSObjectReference>(
-                    "import", "/_content/TimeTracker.Rcl/js/IndexedDbAccessor.js"));
+                await JsRuntime.Import(
+                    "/_content/TimeTracker.Rcl/js/IndexedDbAccessor.js"));
         }
     }
 
