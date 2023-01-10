@@ -49,7 +49,18 @@ public partial class Index : IDisposable
         {
             return;
         }
+
+        var result = await JsRuntime.Confirm(
+            "Are you sure you want to import data? The imported data will overwrite the current data. This cannot be undone.");
+        if (result == false)
+        {
+            return;
+        }
+
+        await DataService.ClearAllDataAsync();
         await DataService.ImportDataAsync(data);
+
+        await JsRuntime.Alert("Data has been imported and has overwritten current data.");
     }
 
     private async Task ClearAllDataAsync()
