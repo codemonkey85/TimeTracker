@@ -6,11 +6,11 @@
         </span>
         <span>
             <label for="StartTime">Start</label>
-            <InputDate id="StartTime" Type="InputDateType.Time" @bind-Value="TimeEntryModel.StartTime" @bind-Value:after="@Refresh" />
+            <input id="StartTime" type="time" @bind="TimeEntryModel.StartTime" @bind:after="@Refresh" />
         </span>
         <span>
             <label for="EndTime">End</label>
-            <InputDate id="EndTime" Type="InputDateType.Time" @bind-Value="TimeEntryModel.EndTime" @bind-Value:after="@Refresh" />
+            <input id="EndTime" type="time" @bind="TimeEntryModel.EndTime" @bind:after="@Refresh" />
         </span>
         <label>Total hours: @CalculateHoursWorked(TimeEntryModel).ToString(Constants.HoursFormat)</label>
         <button type="button" class="btn btn-secondary clear-button" @onclick="ClearTimeEntry">Clear</button>
