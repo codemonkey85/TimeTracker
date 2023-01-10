@@ -3,6 +3,7 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services
+    .AddScoped<TimeTrackerJs>()
     .AddScoped<IndexedDbAccessor>()
     .AddScoped<IDataService, DataService>()
     .AddScoped<IRefreshService, RefreshService>();

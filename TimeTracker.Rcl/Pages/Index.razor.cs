@@ -5,11 +5,9 @@ public partial class Index : IDisposable
 {
     private WeekEntryModel? WeekEntryModel { get; set; }
     private DateOnly startDate = DateOnly.FromDateTime(DateTime.Now.StartOfWeek());
-    private bool isJsInitialized;
 
     protected override async Task OnInitializedAsync()
     {
-        await InitializeJs();
         RefreshService.OnChange += StateHasChanged;
         WeekEntryModel = await DataService.GetWeekEntryFromStartDateAsync(startDate) ?? new WeekEntryModel(startDate) { IsNew = true };
         Refresh();
@@ -26,21 +24,6 @@ public partial class Index : IDisposable
         Refresh();
     }
 
-    private async Task InitializeJs()
-    {
-        if (OperatingSystem.IsBrowser() && !isJsInitialized)
-        {
-            try
-            {
-                await JSHost.ImportAsync("timetracker.js", $"../_content/{typeof(App).Namespace}/{nameof(Pages)}/{nameof(Index)}.razor.js");
-                isJsInitialized = true;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-        }
-    }
 
     private async Task ExportData()
     {
@@ -50,7 +33,7 @@ public partial class Index : IDisposable
 
         try
         {
-            await JsInterop.SaveFile(fileName, json);
+            await TimeTrackerJs.SaveFile(fileName, json);
         }
         catch (Exception ex)
         {
