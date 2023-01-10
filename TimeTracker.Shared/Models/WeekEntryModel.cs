@@ -2,6 +2,7 @@
 
 public class WeekEntryModel
 {
+    [JsonIgnore]
     public int Id { get; set; }
 
     public DateOnly StartDate { get; set; }
@@ -25,5 +26,6 @@ public class WeekEntryModel
         }
     }
 
+    [JsonIgnore]
     public double TotalHours => TimeEntries.Sum(HoursCalculator.CalculateHoursWorked);
 }
