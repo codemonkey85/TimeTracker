@@ -15,14 +15,14 @@
         </div>
         <WeekEntry WeekEntryModel="WeekEntryModel" />
     }
-    
+
     <div class="danger-zone">
         <p><strong>Danger Zone</strong></p>
         <div class="button-container">
-            <div>
-                <InputFile id="file" OnChange="@HandleFile" />
-                <button type="button" class="btn btn-secondary margin-right" disabled="@(browserFile is null)" @onclick=ImportData>Import</button>
-            </div>
+            <InputFile id="file" OnChange="@HandleFile" />
+            <button type="button" class="btn btn-secondary margin-right" disabled="@(browserFile is null)" @onclick=ImportData>Import</button>
+        </div>
+        <div class="button-container">
             <button type="button" class="btn btn-secondary margin-right" @onclick=ExportData>Export</button>
             <button type="button" class="btn btn-danger" @onclick=ClearAllDataAsync>Clear All Data</button>
         </div>
