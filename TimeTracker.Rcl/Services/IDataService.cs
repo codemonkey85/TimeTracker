@@ -19,4 +19,8 @@ public interface IDataService
     Task<ExportImportModel> ExportDataAsync();
 
     Task ImportDataAsync(ExportImportModel exportImportModel);
+
+    Task<List<IGrouping<int, WeekEntryModel>>?> GetDataGroupedByYearAsync();
+
+    Task<List<List<IGrouping<int, WeekEntryModel>>>?> GetDataGroupedByMonthAsync();
 }

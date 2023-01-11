@@ -46,4 +46,17 @@ public record DataService(IndexedDbAccessor IndexedDbAccessor) : IDataService
             await IndexedDbAccessor.CreateValueAsync(Constants.WeekEntriesStore, weekEntry);
         }
     }
+
+    public async Task<List<IGrouping<int, WeekEntryModel>>?> GetDataGroupedByYearAsync() =>
+        (await GetAllWeekEntriesAsync())?
+            .GroupBy(weekEntry => weekEntry.StartDate.Year)
+            .ToList();
+
+    public async Task<List<List<IGrouping<int, WeekEntryModel>>>?> GetDataGroupedByMonthAsync() =>
+        (await GetAllWeekEntriesAsync())?
+            .GroupBy(weekEntry => weekEntry.StartDate.Year)
+            .Select(weekEntry => weekEntry
+                .GroupBy(w => w.StartDate.Month)
+                .ToList()
+            ).ToList();
 }
