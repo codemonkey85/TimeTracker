@@ -2,7 +2,6 @@
 
 public class WeekEntryModel
 {
-    [JsonIgnore]
     public int Id { get; set; }
 
     public DateOnly StartDate { get; set; }

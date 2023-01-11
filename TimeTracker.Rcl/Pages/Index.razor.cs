@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Components.Forms;
+
 namespace TimeTracker.Rcl.Pages;
 
 // ReSharper disable once ClassNeverInstantiated.Global
@@ -5,6 +7,7 @@ public partial class Index : IDisposable
 {
     private WeekEntryModel? WeekEntryModel { get; set; }
     private DateOnly startDate = DateOnly.FromDateTime(DateTime.Now.StartOfWeek());
+    private IBrowserFile? browserFile;
 
     protected override async Task OnInitializedAsync()
     {
@@ -16,6 +19,8 @@ public partial class Index : IDisposable
     public void Dispose() => RefreshService.OnChange -= StateHasChanged;
 
     private void Refresh() => RefreshService.Refresh();
+
+    private void HandleFile(InputFileChangeEventArgs e) => browserFile = e.File;
 
     private async Task OnStartDateChangedAsync()
     {
@@ -43,7 +48,14 @@ public partial class Index : IDisposable
 
     private async Task ImportData()
     {
-        var json = string.Empty;
+        if (browserFile is null)
+        {
+            return;
+        }
+
+        await using var fileStream = browserFile.OpenReadStream();
+        using var streamReader = new StreamReader(fileStream);
+        var json = await streamReader.ReadToEndAsync();
         var data = JsonSerializer.Deserialize<ExportImportModel>(json);
         if (data is null)
         {
@@ -59,8 +71,10 @@ public partial class Index : IDisposable
 
         await DataService.ClearAllDataAsync();
         await DataService.ImportDataAsync(data);
-
         await JsRuntime.Alert("Data has been imported and has overwritten current data.");
+
+        startDate = DateOnly.FromDateTime(DateTime.Now.StartOfWeek());
+        await OnStartDateChangedAsync();
     }
 
     private async Task ClearAllDataAsync()
@@ -74,8 +88,7 @@ public partial class Index : IDisposable
         await DataService.ClearAllDataAsync();
         await JsRuntime.Alert("All data has been cleared.");
 
-        WeekEntryModel = new WeekEntryModel(startDate) { IsNew = true };
-
-        Refresh();
+        startDate = DateOnly.FromDateTime(DateTime.Now.StartOfWeek());
+        await OnStartDateChangedAsync();
     }
 }
