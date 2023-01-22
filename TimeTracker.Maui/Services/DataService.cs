@@ -1,59 +1,79 @@
-﻿namespace TimeTracker.Maui.Services;
+﻿#nullable enable
 
+namespace TimeTracker.Maui.Services;
+
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+#pragma warning disable IDE0022 // Use expression body for methods
 public record DataService : IDataService
 {
+    private readonly List<WeekEntryModel> data = new();
+
     public async Task ClearAllDataAsync()
     {
-        throw new NotImplementedException();
+        data.Clear();
     }
 
     public async Task CreateWeekEntryAsync(WeekEntryModel weekEntry)
     {
-        throw new NotImplementedException();
+        data.Add(weekEntry);
     }
 
     public async Task DeleteWeekEntryAsync(WeekEntryModel weekEntry)
     {
-        throw new NotImplementedException();
+        data.Remove(weekEntry);
     }
 
     public async Task<ExportImportModel> ExportDataAsync()
     {
-        throw new NotImplementedException();
+        return new ExportImportModel(data);
     }
 
-    public async Task<List<WeekEntryModel>> GetAllWeekEntriesAsync()
+    public async Task<List<WeekEntryModel>?> GetAllWeekEntriesAsync()
     {
-        throw new NotImplementedException();
+        return data;
     }
 
-    public async Task<List<List<IGrouping<int, WeekEntryModel>>>> GetDataGroupedByMonthAsync()
+    public async Task<List<IGrouping<int, WeekEntryModel>>?> GetDataGroupedByYearAsync() =>
+        (await GetAllWeekEntriesAsync())?
+            .GroupBy(weekEntry => weekEntry.StartDate.Year)
+            .ToList();
+
+    public async Task<List<List<IGrouping<int, WeekEntryModel>>>?> GetDataGroupedByMonthAsync() =>
+        (await GetAllWeekEntriesAsync())?
+            .GroupBy(weekEntry => weekEntry.StartDate.Year)
+            .Select(weekEntry => weekEntry
+                .GroupBy(w => w.StartDate.Month)
+                .ToList()
+            ).ToList();
+
+    public async Task<WeekEntryModel?> GetWeekEntryAsync(int id)
     {
-        throw new NotImplementedException();
+        return data.FirstOrDefault(weekEntry => weekEntry.Id == id);
     }
 
-    public async Task<List<IGrouping<int, WeekEntryModel>>> GetDataGroupedByYearAsync()
+    public async Task<WeekEntryModel?> GetWeekEntryFromStartDateAsync(DateOnly indexValue)
     {
-        throw new NotImplementedException();
-    }
-
-    public async Task<WeekEntryModel> GetWeekEntryAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<WeekEntryModel> GetWeekEntryFromStartDateAsync(DateOnly indexValue)
-    {
-        throw new NotImplementedException();
+        return data.FirstOrDefault(weekEntry => weekEntry.StartDate == indexValue);
     }
 
     public async Task ImportDataAsync(ExportImportModel exportImportModel)
     {
-        throw new NotImplementedException();
+        data.Clear();
+        foreach (var weekEntry in exportImportModel.WeekEntries)
+        {
+            data.Add(weekEntry);
+        }
     }
 
     public async Task UpdateWeekEntryAsync(int id, WeekEntryModel weekEntry)
     {
-        throw new NotImplementedException();
+        var indexNum = data.IndexOf(weekEntry);
+        if (indexNum == -1)
+        {
+            data.RemoveAt(indexNum);
+            data.Insert(indexNum, weekEntry);
+        }
     }
 }
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+#pragma warning restore IDE0022 // Use expression body for methods
