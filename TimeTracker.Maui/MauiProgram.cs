@@ -7,20 +7,19 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-            });
+            .ConfigureFonts(fonts => fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular"));
 
-        builder.Services.AddMauiBlazorWebView();
-        builder.Services
+        var services = builder.Services;
+
+        services.AddMauiBlazorWebView();
+        services
             .AddScoped<TimeTrackerJs>()
             .AddScoped<IndexedDbAccessor>()
             .AddScoped<IDataService, DataService>()
             .AddScoped<IRefreshService, RefreshService>();
 
 #if DEBUG
-        builder.Services.AddBlazorWebViewDeveloperTools();
+        services.AddBlazorWebViewDeveloperTools();
         builder.Logging.AddDebug();
 #endif
 

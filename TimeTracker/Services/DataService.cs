@@ -1,4 +1,4 @@
-﻿namespace TimeTracker.Rcl.Services;
+﻿namespace TimeTracker.Services;
 
 public record DataService(IndexedDbAccessor IndexedDbAccessor) : IDataService
 {
