@@ -29,7 +29,6 @@ public partial class Index : IDisposable
         Refresh();
     }
 
-
     private async Task ExportData()
     {
         var data = await DataService.ExportDataAsync();
