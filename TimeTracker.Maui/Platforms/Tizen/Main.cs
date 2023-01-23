@@ -1,4 +1,4 @@
-namespace TimeTracker.Maui;
+namespace TimeTracker.MauiBlazor;
 
 internal class Program : MauiApplication
 {

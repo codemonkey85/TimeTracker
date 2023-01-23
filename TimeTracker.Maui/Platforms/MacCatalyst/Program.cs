@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace TimeTracker.Maui;
+namespace TimeTracker.MauiBlazor;
 
 public class Program
 {

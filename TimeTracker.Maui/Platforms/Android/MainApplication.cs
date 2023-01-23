@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace TimeTracker.Maui;
+namespace TimeTracker.MauiBlazor;
 
 [Application]
 public class MainApplication : MauiApplication

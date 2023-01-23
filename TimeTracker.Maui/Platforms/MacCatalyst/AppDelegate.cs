@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace TimeTracker.Maui;
+namespace TimeTracker.MauiBlazor;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

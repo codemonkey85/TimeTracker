@@ -1,4 +1,4 @@
-﻿namespace TimeTracker.Maui;
+﻿namespace TimeTracker.MauiBlazor;
 
 public partial class MainPage : ContentPage
 {

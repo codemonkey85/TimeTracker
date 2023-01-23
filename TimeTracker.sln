@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Shared", "TimeTracker.Shared\TimeTracker.Shared.csproj", "{34033C01-54F1-41E0-9C08-26E308458ABC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Maui", "TimeTracker.Maui\TimeTracker.Maui.csproj", "{49B7FF34-DFF7-4415-B91D-ADB28C0FC542}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.MauiBlazor", "TimeTracker.Maui\TimeTracker.MauiBlazor.csproj", "{49B7FF34-DFF7-4415-B91D-ADB28C0FC542}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿namespace TimeTracker.Maui;
+﻿namespace TimeTracker.MauiBlazor;
 
 public static class MauiProgram
 {
@@ -14,7 +14,6 @@ public static class MauiProgram
         services.AddMauiBlazorWebView();
         services
             .AddScoped<TimeTrackerJs>()
-            .AddScoped<IndexedDbAccessor>()
             .AddScoped<IDataService, DataService>()
             .AddScoped<IRefreshService, RefreshService>();
 
@@ -23,6 +22,7 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
-        return builder.Build();
+        var app = builder.Build();
+        return app;
     }
 }
