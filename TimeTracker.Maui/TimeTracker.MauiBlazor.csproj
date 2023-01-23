@@ -32,8 +32,8 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-	  <CodesignKey>Apple Development: Created via API (DVP7LGY2NV)</CodesignKey>
-	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
+		<CodesignKey>Apple Development: Created via API (DVP7LGY2NV)</CodesignKey>
+		<CodesignProvision>VS: WildCard Development</CodesignProvision>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -59,7 +59,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\TimeTracker.Rcl\TimeTracker.Rcl.csproj" />
+		<ProjectReference Include="..\TimeTracker.Rcl\TimeTracker.Rcl.csproj" />
 	</ItemGroup>
 
 </Project>

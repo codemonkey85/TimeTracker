@@ -6,7 +6,8 @@ builder.Services
     .AddScoped<TimeTrackerJs>()
     .AddScoped<IndexedDbAccessor>()
     .AddScoped<IDataService, DataService>()
-    .AddScoped<IRefreshService, RefreshService>();
+    .AddScoped<IRefreshService, RefreshService>()
+    .AddScoped<IDialogService, DialogService>();
 
 var app = builder.Build();
 

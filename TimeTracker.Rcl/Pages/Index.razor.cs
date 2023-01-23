@@ -62,8 +62,11 @@ public partial class Index : IDisposable
             return;
         }
 
-        var result = await JsRuntime.Confirm(
-            "Are you sure you want to import data? The imported data will overwrite the current data. This cannot be undone.");
+        var result = await DialogService.ConfirmAsync(
+            "Import Data",
+            "Are you sure you want to import data? The imported data will overwrite the current data. This cannot be undone.",
+            "Yes",
+            "No");
         if (result == false)
         {
             return;
@@ -71,7 +74,10 @@ public partial class Index : IDisposable
 
         await DataService.ClearAllDataAsync();
         await DataService.ImportDataAsync(data);
-        await JsRuntime.Alert("Data has been imported and has overwritten current data.");
+        await DialogService.AlertAsync(
+            "Import Data",
+            "Data has been imported and has overwritten current data.",
+            "Ok");
 
         startDate = DateOnly.FromDateTime(DateTime.Now.StartOfWeek());
         await OnStartDateChangedAsync();
@@ -79,14 +85,21 @@ public partial class Index : IDisposable
 
     private async Task ClearAllDataAsync()
     {
-        var result = await JsRuntime.Confirm("Are you sure you want to clear all data? This cannot be undone.");
+        var result = await DialogService.ConfirmAsync(
+            "Clear Data",
+            "Are you sure you want to clear all data? This cannot be undone.",
+            "Yes",
+            "No");
         if (result == false)
         {
             return;
         }
 
         await DataService.ClearAllDataAsync();
-        await JsRuntime.Alert("All data has been cleared.");
+        await DialogService.AlertAsync(
+            "Clear Data",
+            "All data has been cleared.",
+            "Ok");
 
         startDate = DateOnly.FromDateTime(DateTime.Now.StartOfWeek());
         await OnStartDateChangedAsync();

@@ -15,7 +15,8 @@ public static class MauiProgram
         services
             .AddScoped<TimeTrackerJs>()
             .AddScoped<IDataService, DataService>()
-            .AddScoped<IRefreshService, RefreshService>();
+            .AddScoped<IRefreshService, RefreshService>()
+            .AddScoped<IDialogService, DialogService>();
 
 #if DEBUG
         services.AddBlazorWebViewDeveloperTools();

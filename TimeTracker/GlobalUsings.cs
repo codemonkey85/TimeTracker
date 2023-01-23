@@ -1,6 +1,8 @@
 ﻿global using Microsoft.AspNetCore.Components.Web;
 global using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+global using Microsoft.JSInterop;
 global using TimeTracker.Rcl;
+global using TimeTracker.Rcl.Extensions;
 global using TimeTracker.Rcl.Interop;
 global using TimeTracker.Rcl.Services;
 global using TimeTracker.Services;
