@@ -3,6 +3,7 @@
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Web
+@using Microsoft.Extensions.Logging;
 @using Microsoft.JSInterop
 @using TimeTracker
 @using TimeTracker.Rcl
@@ -14,6 +15,7 @@
 @using TimeTracker.Shared.Models
 @using static TimeTracker.Shared.Services.HoursCalculator
 
+@inject ILogger Logger
 @inject TimeTrackerJs TimeTrackerJs
 @inject IDataService DataService
 @inject ICloudManager CloudManager
