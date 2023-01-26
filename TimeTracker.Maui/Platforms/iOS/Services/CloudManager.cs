@@ -32,10 +32,10 @@ public record CloudManager(ILogger Logger) : ICloudManager
             var result = _store.Synchronize(); // Runs async in background
             return result;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
-            Logger.LogError(e, "{className}", nameof(CloudManager));
+            Console.WriteLine(ex);
+            Logger.LogError(ex, "{className}", nameof(CloudManager));
             return false;
         }
     }
@@ -47,10 +47,10 @@ public record CloudManager(ILogger Logger) : ICloudManager
             var setting = _store.GetString(name);
             return setting;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
-            Logger.LogError(e, "{className}", nameof(CloudManager));
+            Console.WriteLine(ex);
+            Logger.LogError(ex, "{className}", nameof(CloudManager));
             return null;
         }
     }
