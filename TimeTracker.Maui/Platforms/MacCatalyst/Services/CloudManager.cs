@@ -2,7 +2,7 @@
 
 namespace TimeTracker.MauiBlazor.Services;
 
-public record CloudManager : ICloudManager
+public record CloudManager(ILogger Logger) : ICloudManager
 {
     private readonly NSUbiquitousKeyValueStore _store = NSUbiquitousKeyValueStore.DefaultStore;
 
@@ -35,7 +35,7 @@ public record CloudManager : ICloudManager
         catch (Exception e)
         {
             Console.WriteLine(e);
-            //Logger.LogException(e, nameof(CloudManager), null);
+            Logger.LogError(e, "{className}", nameof(CloudManager));
             return false;
         }
     }
@@ -50,7 +50,7 @@ public record CloudManager : ICloudManager
         catch (Exception e)
         {
             Console.WriteLine(e);
-            //Logger.LogException(e, nameof(CloudManager), null);
+            Logger.LogError(e, "{className}", nameof(CloudManager));
             return null;
         }
     }
@@ -68,7 +68,7 @@ public record CloudManager : ICloudManager
         // Max 64kb for the whole storage
         if (reason == 2)
         {
-            //Logger.LogException(new Exception("Cloud QuotaViolationChange"), nameof(CloudManager), null);
+            Logger.LogError(new Exception("Cloud QuotaViolationChange"), "{className}", nameof(CloudManager));
             return;
         }
 

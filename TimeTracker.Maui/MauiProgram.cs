@@ -12,7 +12,9 @@ public static class MauiProgram
         var services = builder.Services;
 
         services.AddMauiBlazorWebView();
+
         services
+            .AddLogging(logging => logging.AddDebug())
             .AddScoped<TimeTrackerJs>()
             .AddScoped<IDataService, DataService>()
             .AddScoped<ICloudManager, CloudManager>()
