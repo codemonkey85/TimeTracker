@@ -15,6 +15,7 @@ public static class MauiProgram
         services
             .AddScoped<TimeTrackerJs>()
             .AddScoped<IDataService, DataService>()
+            .AddScoped<ICloudManager, CloudManager>()
             .AddScoped<IRefreshService, RefreshService>()
             .AddScoped<IDialogService, DialogService>();
 
@@ -25,5 +26,15 @@ public static class MauiProgram
 
         var app = builder.Build();
         return app;
+
+        /*
+            var events = new Dictionary<string, Action>();
+            Action action = () =>
+            {
+              // Do stuff when "MySetting" have changed in the cloud
+            };
+            events.Add("MySetting", action);
+            CloudManager.InitChangeTracker(events);
+        */
     }
 }

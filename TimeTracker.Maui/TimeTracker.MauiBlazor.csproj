@@ -62,4 +62,13 @@
 		<ProjectReference Include="..\TimeTracker.Rcl\TimeTracker.Rcl.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Platforms\Android\Services\CloudManager.cs">
+	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+	  </Compile>
+	  <Compile Update="Platforms\MacCatalyst\Services\CloudManager.cs">
+	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+	  </Compile>
+	</ItemGroup>
+
 </Project>
