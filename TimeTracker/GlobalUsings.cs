@@ -8,3 +8,4 @@ global using TimeTracker.Rcl.Services;
 global using TimeTracker.Services;
 global using TimeTracker.Shared;
 global using TimeTracker.Shared.Models;
+global using TimeTracker.Shared.Services;

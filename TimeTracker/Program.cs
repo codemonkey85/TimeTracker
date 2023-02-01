@@ -7,6 +7,7 @@ builder.Services
     .AddScoped<TimeTrackerJs>()
     .AddScoped<IndexedDbAccessor>()
     .AddScoped<IDataService, DataService>()
+    .AddScoped<ICloudManager, CloudManager>()
     .AddScoped<IRefreshService, RefreshService>()
     .AddScoped<IDialogService, DialogService>();
 
