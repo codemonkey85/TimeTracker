@@ -9,19 +9,27 @@
             </MudItem>
 
             <MudItem xs="11" sm="11" md="5" lg="5" xl="5" Class="mx-1">
-                <MudTimePicker @bind-Time="@TimeEntryModel.StartTime"
-                               @bind-Time:after="@Refresh"
-                               AmPm="@true"
-                               Editable="true"
-                               Label="Start" />
+                <MudPaper Outlined="@true">
+                    <MudInputLabel ForId="startTime">
+                        Start
+                    </MudInputLabel>
+                    <InputDate Type="@InputDateType.Time"
+                               id="startTime"
+                               @bind-Value="@TimeEntryModel.StartTime"
+                               @bind-Value:after="@Refresh" />
+                </MudPaper>
             </MudItem>
 
             <MudItem xs="11" sm="11" md="5" lg="5" xl="5" Class="mx-1">
-                <MudTimePicker @bind-Time="@TimeEntryModel.EndTime"
-                               @bind-Time:after="@Refresh"
-                               AmPm="@true"
-                               Editable="true"
-                               Label="End" />
+                <MudPaper Outlined="@true">
+                    <MudInputLabel ForId="startTime">
+                        End
+                    </MudInputLabel>
+                    <InputDate Type="@InputDateType.Time"
+                               id="startTime"
+                               @bind-Value="@TimeEntryModel.EndTime"
+                               @bind-Value:after="@Refresh" />
+                </MudPaper>
             </MudItem>
 
             <MudItem xs="11" sm="11" md="11" lg="11" xl="11" Class="ma-2">
