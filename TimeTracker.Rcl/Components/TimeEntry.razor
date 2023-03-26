@@ -12,6 +12,7 @@
                 <MudTimePicker @bind-Time="@TimeEntryModel.StartTime"
                                @bind-Time:after="@Refresh"
                                AmPm="@true"
+                               Editable="true"
                                Label="Start" />
             </MudItem>
 
@@ -19,6 +20,7 @@
                 <MudTimePicker @bind-Time="@TimeEntryModel.EndTime"
                                @bind-Time:after="@Refresh"
                                AmPm="@true"
+                               Editable="true"
                                Label="End" />
             </MudItem>
 
