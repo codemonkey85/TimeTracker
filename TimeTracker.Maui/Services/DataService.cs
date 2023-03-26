@@ -111,7 +111,7 @@ public record DataService : IDataService
         return Data.FirstOrDefault(weekEntry => weekEntry.Id == id);
     }
 
-    public async Task<WeekEntryModel?> GetWeekEntryFromStartDateAsync(DateOnly indexValue)
+    public async Task<WeekEntryModel?> GetWeekEntryFromStartDateAsync(DateTime indexValue)
     {
         await LoadDataAsync();
         return Data.FirstOrDefault(weekEntry => weekEntry.StartDate == indexValue);

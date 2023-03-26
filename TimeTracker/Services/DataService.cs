@@ -2,7 +2,7 @@
 
 public record DataService(IndexedDbAccessor IndexedDbAccessor) : IDataService
 {
-    public async Task<WeekEntryModel?> GetWeekEntryFromStartDateAsync(DateOnly indexValue) =>
+    public async Task<WeekEntryModel?> GetWeekEntryFromStartDateAsync(DateTime? indexValue) =>
         await IndexedDbAccessor.GetValueByIndexAsync<WeekEntryModel>(Constants.WeekEntriesStore, "startDate", indexValue);
 
     public async Task<List<WeekEntryModel>?> GetAllWeekEntriesAsync() =>
@@ -49,14 +49,14 @@ public record DataService(IndexedDbAccessor IndexedDbAccessor) : IDataService
 
     public async Task<List<IGrouping<int, WeekEntryModel>>?> GetDataGroupedByYearAsync() =>
         (await GetAllWeekEntriesAsync())?
-            .GroupBy(weekEntry => weekEntry.StartDate.Year)
+            .GroupBy(weekEntry => weekEntry.StartDate?.Year ?? 0)
             .ToList();
 
     public async Task<List<List<IGrouping<int, WeekEntryModel>>>?> GetDataGroupedByMonthAsync() =>
         (await GetAllWeekEntriesAsync())?
-            .GroupBy(weekEntry => weekEntry.StartDate.Year)
+            .GroupBy(weekEntry => weekEntry.StartDate?.Year ?? 0)
             .Select(weekEntry => weekEntry
-                .GroupBy(w => w.StartDate.Month)
+                .GroupBy(w => w.StartDate?.Month ?? 0)
                 .ToList()
             ).ToList();
 }

@@ -10,8 +10,8 @@ public class IndexedDbAccessor : JsModule
     public async Task InitializeAsync() =>
         await InvokeVoidAsync("initialize");
 
-    public async Task<T> GetValueByIndexAsync<T>(string storeName, string indexName, object indexValue) =>
-        await InvokeAsync<T>("getByIndex", storeName, indexName, indexValue);
+    public async Task<T> GetValueByIndexAsync<T>(string storeName, string indexName, object? indexValue) =>
+        await InvokeAsync<T>("getByIndex", storeName, indexName, indexValue ?? "");
 
     public async Task<List<T>> GetAllValuesAsync<T>(string storeName) =>
         await InvokeAsync<List<T>>("getAll", storeName);

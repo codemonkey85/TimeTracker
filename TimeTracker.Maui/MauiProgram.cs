@@ -14,6 +14,7 @@ public static class MauiProgram
         services.AddMauiBlazorWebView();
 
         services
+            .AddMudServices()
             .AddLogging(logging => logging.AddDebug())
             .AddScoped<TimeTrackerJs>()
             .AddScoped<IDataService, DataService>()
