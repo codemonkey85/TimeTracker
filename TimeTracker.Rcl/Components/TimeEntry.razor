@@ -1,42 +1,41 @@
 ﻿@if (TimeEntryModel is not null)
 {
-    <span>
+    <MudPaper Class="mt-4">
+        <MudGrid>
+            <MudItem xs="11" sm="11" md="11" lg="11" xl="11" Class="mx-1">
+                <MudText>
+                    @TimeEntryModel.Date?.ToString(Constants.DateFormat)
+                </MudText>
+            </MudItem>
 
-        <label>
-            @TimeEntryModel.Date?.ToString(Constants.DateFormat)
-        </label>
+            <MudItem xs="11" sm="11" md="5" lg="5" xl="5" Class="mx-1">
+                <MudTimePicker @bind-Time="@TimeEntryModel.StartTime"
+                               @bind-Time:after="@Refresh"
+                               Label="Start" />
+            </MudItem>
 
-    </span>
+            <MudItem xs="11" sm="11" md="5" lg="5" xl="5" Class="mx-1">
+                <MudTimePicker @bind-Time="@TimeEntryModel.StartTime"
+                               @bind-Time:after="@Refresh"
+                               Label="Start" />
+            </MudItem>
 
-    <span>
+            <MudItem xs="11" sm="11" md="11" lg="11" xl="11" Class="ma-2">
+                <MudText>
+                    <label>
+                        Total hours: @CalculateHoursWorked(TimeEntryModel).ToString(Constants.HoursFormat)
+                    </label>
+                </MudText>
+            </MudItem>
 
-        <label for="StartTime">
-            Start
-        </label>
-
-        <input id="StartTime"
-               type="time"
-               @bind="TimeEntryModel.StartTime"
-               @bind:after="@Refresh" />
-
-    </span>
-
-    <span>
-        <label for="EndTime">
-            End
-        </label>
-        <input id="EndTime"
-               type="time"
-               @bind="TimeEntryModel.EndTime"
-               @bind:after="@Refresh" />
-    </span>
-
-    <label>
-        Total hours: @CalculateHoursWorked(TimeEntryModel).ToString(Constants.HoursFormat)
-    </label>
-
-    <TtButton class="btn btn-secondary clear-button"
-              @onclick="ClearTimeEntry">
-        Clear
-    </TtButton>
+            <MudItem xs="11" sm="11" md="11" lg="11" xl="11" Class="ma-2">
+                <MudText>
+                    <TtButton class="btn btn-secondary clear-button"
+                          @onclick="ClearTimeEntry">
+                        Clear
+                    </TtButton>
+                </MudText>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
 }

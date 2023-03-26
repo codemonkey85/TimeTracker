@@ -12,13 +12,13 @@ public static class HoursCalculator
         return (endTime - startTime).TotalHours;
     }
 
-    private static TimeOnly ConvertTime(TimeOnly time) => time switch
+    private static TimeSpan ConvertTime(TimeSpan time) => time switch
     {
-        { Minute: < 8 } => new TimeOnly(time.Hour, 0),
-        { Minute: < 23 } => new TimeOnly(time.Hour, 15),
-        { Minute: < 38 } => new TimeOnly(time.Hour, 30),
-        { Minute: < 53 } => new TimeOnly(time.Hour, 45),
-        { Minute: >= 53 } => new TimeOnly(time.Hour + 1, 0),
+        { Minutes: < 8 } => new TimeSpan(hours: time.Hours, minutes: 0, 0),
+        { Minutes: < 23 } => new TimeSpan(hours: time.Hours, minutes: 15, 0),
+        { Minutes: < 38 } => new TimeSpan(hours: time.Hours, minutes: 30, 0),
+        { Minutes: < 53 } => new TimeSpan(hours: time.Hours, minutes: 45, 0),
+        { Minutes: >= 53 } => new TimeSpan(hours: time.Hours + 1, minutes: 0, 0),
     };
 
     public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek = Constants.StartOfWeek)

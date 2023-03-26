@@ -5,17 +5,23 @@
 
         <DataAnnotationsValidator />
 
-        @foreach (var timeEntryModel in WeekEntryModel.TimeEntries.OrderBy(timeEntry => timeEntry.Date))
-        {
-            <TimeEntry TimeEntryModel="timeEntryModel" />
-        }
+        <MudStack>
+            @foreach (var timeEntryModel in WeekEntryModel.TimeEntries
+            .OrderBy(timeEntry => timeEntry.Date))
+            {
+                <TimeEntry TimeEntryModel="timeEntryModel" />
+            }
+        </MudStack>
 
         <MudText>
             Total hours: @WeekEntryModel.TotalHours.ToString(Constants.HoursFormat)
         </MudText>
 
         <MudText>
-            Remaining hours: <strong>@((Constants.MaxHours - WeekEntryModel.TotalHours).ToString(Constants.HoursFormat))</strong> out of @Constants.MaxHours.ToString(Constants.HoursFormat)
+            Remaining hours: <strong>
+                @((Constants.MaxHours - WeekEntryModel.TotalHours)
+                .ToString(Constants.HoursFormat))
+            </strong> out of @Constants.MaxHours.ToString(Constants.HoursFormat)
         </MudText>
 
         <TtButton ButtonType="@ButtonType.Submit"
