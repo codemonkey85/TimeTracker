@@ -26,43 +26,39 @@
             </MudButton>
         </PickerActions>
     </MudDatePicker>
-
     <WeekEntry WeekEntryModel="WeekEntryModel" />
 }
 
-<MudPaper Class="border-solid border-2 mud-border-error my-4 pa-2" Elevation="0">
-
-    <p>
-        <strong>
-            Danger Zone
-        </strong>
-    </p>
-
-    <div class="button-container">
-
-        <InputFile id="file"
-                   OnChange="@HandleFile" />
-
-        <TtButton class="btn btn-secondary margin-right"
-                  disabled="@(browserFile is null)"
-                  @onclick=ImportData>
-            Import
-        </TtButton>
-
-    </div>
-
-    <div class="button-container">
-
-        <TtButton class="btn btn-secondary margin-right"
-                  @onclick=ExportData>
+<MudPaper Class="border-solid border-4 mud-border-error my-4 pa-2"
+          Elevation="0">
+    <MudText Typo="@Typo.h5"
+             Color="@Color.Error">
+        Danger Zone
+    </MudText>
+    <MudFileUpload T="@IBrowserFile"
+                   FilesChanged="HandleFile">
+        <ButtonTemplate>
+            <TtButton HtmlTag="label"
+                      Color="@Color.Primary"
+                      StartIcon="@Icons.Material.Filled.CloudUpload"
+                      for="@context">
+                Choose a file to import
+            </TtButton>
+        </ButtonTemplate>
+    </MudFileUpload>
+    <TtButton Disabled="@(browserFile is null)"
+              Class="mt-2 mb-4"
+              @onclick=ImportData>
+        Import
+    </TtButton>
+    <MudStack Row="@true"
+              Spacing="2">
+        <TtButton @onclick=ExportData>
             Export
         </TtButton>
-
-        <TtButton class="btn btn-danger"
+        <TtButton Color="@Color.Error"
                   @onclick=ClearAllDataAsync>
             Clear All Data
         </TtButton>
-
-    </div>
-
+    </MudStack>
 </MudPaper>

@@ -19,7 +19,7 @@ public partial class Index : IDisposable
 
     private void Refresh() => RefreshService.Refresh();
 
-    private void HandleFile(InputFileChangeEventArgs e) => browserFile = e.File;
+    private void HandleFile(IBrowserFile file) => browserFile = file;
 
     private async Task OnStartDateChangedAsync()
     {
