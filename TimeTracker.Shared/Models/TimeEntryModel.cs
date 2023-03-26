@@ -2,7 +2,7 @@
 
 public class TimeEntryModel
 {
-    public DateOnly Date { get; init; }
+    public DateTime? Date { get; init; }
 
     public TimeOnly? StartTime { get; set; }
 

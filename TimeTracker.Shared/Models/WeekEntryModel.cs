@@ -4,16 +4,16 @@ public class WeekEntryModel
 {
     public int Id { get; set; }
 
-    public DateOnly StartDate { get; set; }
+    public DateTime? StartDate { get; set; }
 
     public List<TimeEntryModel> TimeEntries { get; set; } = new();
 
     [JsonIgnore]
     public bool IsNew { get; set; }
 
-    public WeekEntryModel(DateOnly startDate)
+    public WeekEntryModel(DateTime? startDate)
     {
-        StartDate = startDate.StartOfWeek();
+        StartDate = startDate?.StartOfWeek();
         InitializeTimeEntries();
     }
 
@@ -21,7 +21,7 @@ public class WeekEntryModel
     {
         for (var day = 0; day < 7; day++)
         {
-            TimeEntries.Add(new TimeEntryModel { Date = StartDate.AddDays(day) });
+            TimeEntries.Add(new TimeEntryModel { Date = StartDate?.AddDays(day) });
         }
     }
 

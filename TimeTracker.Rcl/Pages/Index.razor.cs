@@ -4,8 +4,9 @@ namespace TimeTracker.Rcl.Pages;
 public partial class Index : IDisposable
 {
     private WeekEntryModel? WeekEntryModel { get; set; }
-    private DateOnly startDate = DateOnly.FromDateTime(DateTime.Now.StartOfWeek());
+    private DateTime? startDate = DateTime.Now.StartOfWeek();
     private IBrowserFile? browserFile;
+    private MudDatePicker? _picker;
 
     protected override async Task OnInitializedAsync()
     {
@@ -22,7 +23,7 @@ public partial class Index : IDisposable
 
     private async Task OnStartDateChangedAsync()
     {
-        startDate = startDate.StartOfWeek();
+        startDate = startDate?.StartOfWeek();
         WeekEntryModel = await DataService.GetWeekEntryFromStartDateAsync(startDate) ?? new WeekEntryModel(startDate) { IsNew = true };
         Refresh();
     }
@@ -76,7 +77,7 @@ public partial class Index : IDisposable
             "Data has been imported and has overwritten current data.",
             "Ok");
 
-        startDate = DateOnly.FromDateTime(DateTime.Now.StartOfWeek());
+        startDate = DateTime.Now.StartOfWeek();
         await OnStartDateChangedAsync();
     }
 
@@ -98,7 +99,7 @@ public partial class Index : IDisposable
             "All data has been cleared.",
             "Ok");
 
-        startDate = DateOnly.FromDateTime(DateTime.Now.StartOfWeek());
+        startDate = DateTime.Now.StartOfWeek();
         await OnStartDateChangedAsync();
     }
 }

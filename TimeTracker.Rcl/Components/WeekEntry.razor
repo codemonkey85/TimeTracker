@@ -1,35 +1,27 @@
 ﻿@if (WeekEntryModel is { StartDate.DayOfWeek: DayOfWeek.Sunday })
 {
-    <div class="week-entry-container">
+    <EditForm Model="WeekEntryModel"
+              OnValidSubmit="SaveTimeEntryAsync">
 
-        <EditForm Model="WeekEntryModel"
-                  OnValidSubmit="SaveTimeEntryAsync">
+        <DataAnnotationsValidator />
 
-            <DataAnnotationsValidator />
+        @foreach (var timeEntryModel in WeekEntryModel.TimeEntries.OrderBy(timeEntry => timeEntry.Date))
+        {
+            <TimeEntry TimeEntryModel="timeEntryModel" />
+        }
 
-            @foreach (var timeEntryModel in WeekEntryModel.TimeEntries.OrderBy(timeEntry => timeEntry.Date))
-            {
-                <TimeEntry TimeEntryModel="timeEntryModel" />
-            }
+        <MudText>
+            Total hours: @WeekEntryModel.TotalHours.ToString(Constants.HoursFormat)
+        </MudText>
 
-            <span>
-                Total hours: @WeekEntryModel.TotalHours.ToString(Constants.HoursFormat)
-            </span>
+        <MudText>
+            Remaining hours: <strong>@((Constants.MaxHours - WeekEntryModel.TotalHours).ToString(Constants.HoursFormat))</strong> out of @Constants.MaxHours.ToString(Constants.HoursFormat)
+        </MudText>
 
-            <br />
+        <TtButton ButtonType="@ButtonType.Submit"
+                  Color="@Color.Primary">
+            Save
+        </TtButton>
 
-            <span>
-                Remaining hours: <strong>@((Constants.MaxHours - WeekEntryModel.TotalHours).ToString(Constants.HoursFormat))</strong> out of @Constants.MaxHours.ToString(Constants.HoursFormat)
-            </span>
-
-            <div>
-                <button type="submit"
-                        class="btn btn-primary">
-                    Save
-                </button>
-            </div>
-
-        </EditForm>
-
-    </div>
+    </EditForm>
 }

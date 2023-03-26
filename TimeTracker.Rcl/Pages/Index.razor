@@ -4,20 +4,34 @@
     Time Tracker
 </PageTitle>
 
-
 @if (WeekEntryModel is not null)
 {
-    <div>
-        <input id="startDateInput"
-               type="date"
-               @bind="startDate"
-               @bind:after="@OnStartDateChangedAsync" />
-    </div>
+    <MudDatePicker @ref="_picker"
+                   @bind-Date="startDate"
+                   @bind-Date:after="@OnStartDateChangedAsync"
+                   Label="Start Date"
+                   Mask="@(new DateMask("MM/dd/yyyy"))"
+                   DateFormat="MM/dd/yyyy">
+        <PickerActions>
+            <MudButton Class="mr-auto align-self-start"
+                       OnClick="@(() => { if(_picker is not null) { _picker.GoToDate(DateTime.Today, true); _picker.Close(); } })">
+                Today
+            </MudButton>
+            <MudButton OnClick="@(() => _picker?.Close(false))">
+                Cancel
+            </MudButton>
+            <MudButton Color="Color.Primary"
+                       OnClick="@(() => _picker?.Close())">
+                Ok
+            </MudButton>
+        </PickerActions>
+    </MudDatePicker>
 
     <WeekEntry WeekEntryModel="WeekEntryModel" />
 }
 
-<div class="danger-zone">
+<MudPaper Class="border-solid border-2 mud-border-error my-4 pa-2" Elevation="0">
+
     <p>
         <strong>
             Danger Zone
@@ -29,28 +43,26 @@
         <InputFile id="file"
                    OnChange="@HandleFile" />
 
-        <button type="button"
-                class="btn btn-secondary margin-right"
-                disabled="@(browserFile is null)"
-                @onclick=ImportData>
+        <TtButton class="btn btn-secondary margin-right"
+                  disabled="@(browserFile is null)"
+                  @onclick=ImportData>
             Import
-        </button>
+        </TtButton>
 
     </div>
 
     <div class="button-container">
 
-        <button type="button"
-                class="btn btn-secondary margin-right"
-                @onclick=ExportData>
+        <TtButton class="btn btn-secondary margin-right"
+                  @onclick=ExportData>
             Export
-        </button>
+        </TtButton>
 
-        <button type="button"
-                class="btn btn-danger"
-                @onclick=ClearAllDataAsync>
+        <TtButton class="btn btn-danger"
+                  @onclick=ClearAllDataAsync>
             Clear All Data
-        </button>
+        </TtButton>
 
     </div>
-</div>
+
+</MudPaper>

@@ -2,7 +2,7 @@
 
 public interface IDataService
 {
-    Task<WeekEntryModel?> GetWeekEntryFromStartDateAsync(DateOnly indexValue);
+    Task<WeekEntryModel?> GetWeekEntryFromStartDateAsync(DateTime? indexValue);
 
     Task<List<WeekEntryModel>?> GetAllWeekEntriesAsync();
 
