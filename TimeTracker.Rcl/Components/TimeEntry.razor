@@ -1,18 +1,47 @@
 ﻿@if (TimeEntryModel is not null)
 {
     <div class="time-entry-container">
+
         <span>
-            <label>@TimeEntryModel.Date.ToString(Constants.DateFormat)</label>
+
+            <label>
+                @TimeEntryModel.Date.ToString(Constants.DateFormat)
+            </label>
+
         </span>
+
         <span>
-            <label for="StartTime">Start</label>
-            <input id="StartTime" type="time" @bind="TimeEntryModel.StartTime" @bind:after="@Refresh" />
+
+            <label for="StartTime">
+                Start
+            </label>
+
+            <input id="StartTime"
+                   type="time"
+                   @bind="TimeEntryModel.StartTime"
+                   @bind:after="@Refresh" />
+
         </span>
+
         <span>
-            <label for="EndTime">End</label>
-            <input id="EndTime" type="time" @bind="TimeEntryModel.EndTime" @bind:after="@Refresh" />
+            <label for="EndTime">
+                End
+            </label>
+            <input id="EndTime"
+                   type="time"
+                   @bind="TimeEntryModel.EndTime"
+                   @bind:after="@Refresh" />
         </span>
-        <label>Total hours: @CalculateHoursWorked(TimeEntryModel).ToString(Constants.HoursFormat)</label>
-        <button type="button" class="btn btn-secondary clear-button" @onclick="ClearTimeEntry">Clear</button>
+
+        <label>
+            Total hours: @CalculateHoursWorked(TimeEntryModel).ToString(Constants.HoursFormat)
+        </label>
+
+        <button type="button"
+                class="btn btn-secondary clear-button"
+                @onclick="ClearTimeEntry">
+            Clear
+        </button>
+
     </div>
 }

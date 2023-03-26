@@ -1,30 +1,56 @@
 ﻿@page "/"
 
-<PageTitle>Time Tracker</PageTitle>
+<PageTitle>
+    Time Tracker
+</PageTitle>
 
-<div class="index-container">
-    <h1>Time Tracker</h1>
 
-    @if (WeekEntryModel is not null)
-    {
-        <div>
-            <input id="startDateInput"
+@if (WeekEntryModel is not null)
+{
+    <div>
+        <input id="startDateInput"
                type="date"
                @bind="startDate"
                @bind:after="@OnStartDateChangedAsync" />
-        </div>
-        <WeekEntry WeekEntryModel="WeekEntryModel" />
-    }
+    </div>
 
-    <div class="danger-zone">
-        <p><strong>Danger Zone</strong></p>
-        <div class="button-container">
-            <InputFile id="file" OnChange="@HandleFile" />
-            <button type="button" class="btn btn-secondary margin-right" disabled="@(browserFile is null)" @onclick=ImportData>Import</button>
-        </div>
-        <div class="button-container">
-            <button type="button" class="btn btn-secondary margin-right" @onclick=ExportData>Export</button>
-            <button type="button" class="btn btn-danger" @onclick=ClearAllDataAsync>Clear All Data</button>
-        </div>
+    <WeekEntry WeekEntryModel="WeekEntryModel" />
+}
+
+<div class="danger-zone">
+    <p>
+        <strong>
+            Danger Zone
+        </strong>
+    </p>
+
+    <div class="button-container">
+
+        <InputFile id="file"
+                   OnChange="@HandleFile" />
+
+        <button type="button"
+                class="btn btn-secondary margin-right"
+                disabled="@(browserFile is null)"
+                @onclick=ImportData>
+            Import
+        </button>
+
+    </div>
+
+    <div class="button-container">
+
+        <button type="button"
+                class="btn btn-secondary margin-right"
+                @onclick=ExportData>
+            Export
+        </button>
+
+        <button type="button"
+                class="btn btn-danger"
+                @onclick=ClearAllDataAsync>
+            Clear All Data
+        </button>
+
     </div>
 </div>
