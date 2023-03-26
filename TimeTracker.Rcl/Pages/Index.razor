@@ -11,6 +11,7 @@
                    @bind-Date:after="@OnStartDateChangedAsync"
                    Label="Start Date"
                    Mask="@(new DateMask("MM/dd/yyyy"))"
+                   Editable="true"
                    DateFormat="MM/dd/yyyy">
         <PickerActions>
             <MudButton Class="mr-auto align-self-start"
