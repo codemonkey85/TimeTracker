@@ -6,28 +6,17 @@
 
 @if (WeekEntryModel is not null)
 {
-    <MudDatePicker @ref="_picker"
-                   @bind-Date="startDate"
-                   @bind-Date:after="@OnStartDateChangedAsync"
-                   Label="Start Date"
-                   Mask="@(new DateMask("MM/dd/yyyy"))"
-                   Editable="true"
-                   PickerVariant="PickerVariant.Dialog"
-                   DateFormat="MM/dd/yyyy">
-        <PickerActions>
-            <MudButton Class="mr-auto align-self-start"
-                       OnClick="@(() => { if(_picker is not null) { _picker.GoToDate(DateTime.Today, true); _picker.Close(); } })">
-                Today
-            </MudButton>
-            <MudButton OnClick="@(() => _picker?.Close(false))">
-                Cancel
-            </MudButton>
-            <MudButton Color="Color.Primary"
-                       OnClick="@(() => _picker?.Close())">
-                Ok
-            </MudButton>
-        </PickerActions>
-    </MudDatePicker>
+    <MudPaper Outlined="@true">
+        <MudInputLabel ForId="startDate">
+            Start Date
+        </MudInputLabel>
+
+        <InputDate Type="@InputDateType.Date"
+                   id="startDate"
+                   @bind-Value="@startDate"
+                   @bind-Value:after="@OnStartDateChangedAsync" />
+    </MudPaper>
+
     <WeekEntry WeekEntryModel="WeekEntryModel" />
 }
 
