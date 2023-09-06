@@ -6,7 +6,6 @@ public partial class Index : IDisposable
     private WeekEntryModel? WeekEntryModel { get; set; }
     private DateTime? startDate = DateTime.Now.StartOfWeek();
     private IBrowserFile? browserFile;
-    private MudDatePicker? _picker;
 
     protected override async Task OnInitializedAsync()
     {
