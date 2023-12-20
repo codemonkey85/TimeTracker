@@ -1,4 +1,6 @@
-﻿namespace TimeTracker.Services;
+﻿using IDialogService = TimeTracker.Rcl.Services.IDialogService;
+
+namespace TimeTracker.Services;
 
 public record DialogService(IJSRuntime JsRuntime) : IDialogService
 {

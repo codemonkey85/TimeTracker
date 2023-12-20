@@ -1,3 +1,6 @@
+using DialogService = TimeTracker.Services.DialogService;
+using IDialogService = TimeTracker.Rcl.Services.IDialogService;
+
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
