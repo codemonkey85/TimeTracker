@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "TimeTracker",
   "resources": {
-    "hash": "sha256-GBVApGxw5y9crbMgYCoy5Fy2fRAvNlArT8SzqcoasE4=",
+    "hash": "sha256-R32ujkO/nUcDzXEOEESJLJUy20cKfOSNGBlTVDHjjZc=",
     "jsModuleNative": {
       "dotnet.native.8.0.1.79v7ippt1d.js": "sha256-U3DDnyef6FaENP7eEENBJnl7qVe/jrGECjCx+aVDn8Q="
     },
@@ -58,9 +58,9 @@
       "System.Text.RegularExpressions.wasm": "sha256-SF1va0IxfGJ3AA3qhrKGjOXkDJXyHt+5Fi280JM2JtY=",
       "System.Threading.wasm": "sha256-/FtF5K93HaC5jOePr9hVvUtOCRk+51Jk0waSfAN9l0o=",
       "System.wasm": "sha256-VcEDE6pOk70XKMQ28ZpXByBb3BywZlGf2e3G/xiAMhI=",
-      "TimeTracker.Rcl.wasm": "sha256-Ta7owNZYeiNapDGDN8FRRNpRwfSdY+RhgwDHuZhyUYk=",
-      "TimeTracker.Shared.wasm": "sha256-OPYL7ol9oRPL8d9HmNZhcBLPiJx7FYF/mQR6Gx8SY/w=",
-      "TimeTracker.wasm": "sha256-8fnxzgg79GLKpF9fcbPByuiGmxN+bosD0qAVtjFyI8M="
+      "TimeTracker.Rcl.wasm": "sha256-TA36+yfmS2qsNC4r1DDVeJJc3wJZwhayuWXHTtFn8gA=",
+      "TimeTracker.Shared.wasm": "sha256-hsKqm2is59rL6YwE4o+iKPZyvWn4J/TlFlc3WPnX1o0=",
+      "TimeTracker.wasm": "sha256-2uj3L1uXj5gAewEUAJtVQg4KtPfg6qsZk/2oO7JGMGk="
     }
   },
   "cacheBootResources": true,
