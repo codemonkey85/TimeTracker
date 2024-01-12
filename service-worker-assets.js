@@ -33,7 +33,7 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-SYOHYJk6xSO0oWxFqZaZH1LVwUduddKUaeHWTPoVKrs=",
+      "hash": "sha256-5Ueuqgn4mI2hhVsTeVxE8C4+tUPk\/eJpLbjlOFsLpk8=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -209,15 +209,15 @@
       "url": "_framework\/System.wasm"
     },
     {
-      "hash": "sha256-oGn6ah+c26jCtmI2Q0nfsx\/2F\/dhNU4NpZFoRaPy4Eg=",
+      "hash": "sha256-XSjfNA7mzjwXp1BqijTrbazzmOExHCjRC5ieHgh8fFg=",
       "url": "_framework\/TimeTracker.Rcl.wasm"
     },
     {
-      "hash": "sha256-VoqnKNIkkXc4XTvmLxIMopVChS9ORrDf6VOQtEQFe8g=",
+      "hash": "sha256-pp7ujoAlFC+7Cc34tfiZOGo\/+XSi9nZBB+HclA0xsdk=",
       "url": "_framework\/TimeTracker.Shared.wasm"
     },
     {
-      "hash": "sha256-Lqq0EC2opUFIQzTI5Odqlpe9e2XxbTBZ3F\/kz66Yj04=",
+      "hash": "sha256-i4y0ZZx8dkrZa3OMrsxpUnL8MKOPqMch3X0sWO4qbiI=",
       "url": "_framework\/TimeTracker.wasm"
     },
     {
@@ -253,5 +253,5 @@
       "url": "_content\/TimeTracker.Rcl\/js\/timetracker.js"
     }
   ],
-  "version": "gvNBIPkx"
+  "version": "4p9+LE2v"
 };
