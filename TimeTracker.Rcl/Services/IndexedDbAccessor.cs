@@ -1,7 +1,13 @@
 ﻿namespace TimeTracker.Rcl.Services;
 
 public class IndexedDbAccessor(IJSRuntime js)
-    : JsModule(js, "_content/TimeTracker.Rcl/js/IndexedDbAccessor.js")
+    : JsModule(js,
+#if DEBUG
+        "/_content/TimeTracker.Rcl/js/IndexedDbAccessor.js"
+#else
+        "/TimeTracker/_content/TimeTracker.Rcl/js/IndexedDbAccessor.js"
+#endif
+        )
 {
     public async Task InitializeAsync() =>
         await InvokeVoidAsync("initialize");
