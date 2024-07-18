@@ -27,15 +27,27 @@
         Danger Zone
     </MudText>
     <MudFileUpload T="@IBrowserFile"
-                   FilesChanged="HandleFile">
-        <ButtonTemplate>
-            <TtButton HtmlTag="label"
-                      Color="@Color.Primary"
-                      StartIcon="@Icons.Material.Filled.CloudUpload"
-                      for="@context">
+                   FilesChanged="@HandleFile">
+        <ActivatorContent>
+            <TtButton Color="@Color.Primary"
+                      StartIcon="@Icons.Material.Filled.CloudUpload">
                 Choose a file to import
             </TtButton>
-        </ButtonTemplate>
+        </ActivatorContent>
+        <SelectedTemplate>
+            @if (context != null)
+            {
+                <MudText>
+                    @context.Name
+                </MudText>
+            }
+            else
+            {
+                <MudText>
+                    No File
+                </MudText>
+            }
+        </SelectedTemplate>
     </MudFileUpload>
     <TtButton Disabled="@(browserFile is null)"
               Class="mt-2 mb-4"

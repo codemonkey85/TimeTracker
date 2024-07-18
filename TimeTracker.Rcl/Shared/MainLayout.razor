@@ -2,6 +2,7 @@
 
 <MudThemeProvider @ref="@mudThemeProvider"
                   @bind-IsDarkMode="@isDarkMode" />
+<MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -28,7 +29,7 @@
                            Icon="@Icons.Custom.Brands.GitHub"
                            Href="https://github.com/codemonkey85/TimeTracker"
                            Target="_blank"
-                           Title="Source code on GitHub"
+                           title="Source code on GitHub"
                            Color="@Color.Inherit"
                            Variant="@Variant.Outlined" />
         </MudStack>
