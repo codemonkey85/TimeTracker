@@ -33,7 +33,7 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-eELGbwCvLrqS5IgMKd7YHHhXH1V2SG5a4cp6juxtzYU=",
+      "hash": "sha256-Pb9iHe+IsKm5ziYyZsWS80C\/LQXQ+kg3hKSQMsiMbBQ=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -213,15 +213,15 @@
       "url": "_framework\/System.wasm"
     },
     {
-      "hash": "sha256-rf8Kgl3mKszkYZiGn\/UzGSEuxIyOCzzLytE14FWP6uo=",
+      "hash": "sha256-lrIv+xDapHVJRhl73n056DGWQ0YTCM5x+tErqJbHGa8=",
       "url": "_framework\/TimeTracker.Rcl.wasm"
     },
     {
-      "hash": "sha256-KsuqiCpJnoZwnt6xgrKo1qkOI6DyGdfX1B5blOP4P2c=",
+      "hash": "sha256-stE2Tl4xpq\/Ij4KuWeb6DbuWdr3OX04jqR1ySvfxlp8=",
       "url": "_framework\/TimeTracker.Shared.wasm"
     },
     {
-      "hash": "sha256-tIwept8nexQA\/n+iW1lZZfOBNbp8RYKUcRJ4Z1AfmlU=",
+      "hash": "sha256-espALO6uAz\/QDmRS3jO+NbmHb\/OXcNkkVrOtrio+y3U=",
       "url": "_framework\/TimeTracker.wasm"
     },
     {
@@ -257,5 +257,5 @@
       "url": "_content\/TimeTracker.Rcl\/js\/timetracker.js"
     }
   ],
-  "version": "A3KSavzK"
+  "version": "aIpuZZ75"
 };
